@@ -104,7 +104,7 @@ router.post("/", upload.single("image"), async (req, res) => {
       stock: Number(req.body.stock),
       description: req.body.description,
       image: req.file
-        ? `http://localhost:5000/uploads/${req.file.filename}`
+        ? `${req.protocol}://${req.get("host")}/uploads/${req.file.filename}`
         : "",
     });
 
