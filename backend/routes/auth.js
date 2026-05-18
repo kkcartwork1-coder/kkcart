@@ -217,6 +217,47 @@ router.post("/login", async (req, res) => {
   }
 });
 
+// router.post("/google-login", async (req, res) => {
+//   try {
+//     const { name, email, photo, googleId } = req.body;
+
+//     if (!email) {
+//       return res.status(400).json({ msg: "Google email missing" });
+//     }
+
+//     let user = await User.findOne({ email });
+
+//     if (!user) {
+//       user = await User.create({
+//         name: name || "Google User",
+//         email,
+//         photo: photo || "",
+//         googleId: googleId || "",
+//         provider: "google",
+//         password: googleId || email,
+//       });
+//     } else {
+//       user.name = user.name || name || "Google User";
+//       user.photo = user.photo || photo || "";
+//       user.googleId = user.googleId || googleId || "";
+//       user.provider = user.provider || "google";
+//       await user.save();
+//     }
+
+//     const token = createToken(user);
+
+//     res.json({
+//       token,
+//       user: userResponse(user),
+//     });
+//   } catch (err) {
+//     console.log("GOOGLE LOGIN ERROR:", err);
+//     res.status(500).json({
+//       msg: "Google login failed",
+//       error: err.message,
+//     });
+//   }
+// });
 router.post("/google-login", async (req, res) => {
   try {
     const { name, email, photo, googleId } = req.body;
@@ -228,19 +269,26 @@ router.post("/google-login", async (req, res) => {
     let user = await User.findOne({ email });
 
     if (!user) {
+      const hashedPassword = await bcrypt.hash(googleId || email, 10);
+
       user = await User.create({
         name: name || "Google User",
         email,
         photo: photo || "",
         googleId: googleId || "",
         provider: "google",
-        password: googleId || email,
+        password: hashedPassword,
       });
     } else {
       user.name = user.name || name || "Google User";
       user.photo = user.photo || photo || "";
       user.googleId = user.googleId || googleId || "";
       user.provider = user.provider || "google";
+
+      if (!user.password) {
+        user.password = await bcrypt.hash(googleId || email, 10);
+      }
+
       await user.save();
     }
 
