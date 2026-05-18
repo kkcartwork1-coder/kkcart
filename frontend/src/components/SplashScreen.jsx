@@ -13,9 +13,8 @@ export default function SplashScreen() {
 
   return (
     <div
-      className={`fixed inset-0 z-[9999] flex items-center justify-center bg-gradient-to-br from-orange-500 via-orange-400 to-yellow-400 overflow-hidden ${
-        closing ? "animate-exit" : "animate-enter"
-      }`}
+      className={`fixed inset-0 z-[9999] flex items-center justify-center bg-gradient-to-br from-orange-500 via-orange-400 to-yellow-400 overflow-hidden ${closing ? "animate-exit" : "animate-enter"
+        }`}
     >
       {/* Glow Effect */}
       <div className="absolute w-96 h-96 bg-white/20 rounded-full blur-3xl animate-pulse"></div>
@@ -25,13 +24,13 @@ export default function SplashScreen() {
 
         {/* Logo */}
         <img
-          src="./images/CART_LOGO-BG_REMOVE.png"
+          src="/images/CART_LOGO-BG_REMOVE.png"
           alt="KKCart"
           className="w-72 md:w-80 h-auto object-contain drop-shadow-2xl animate-float"
         />
 
         {/* Text */}
-        
+
       </div>
 
       <style>{`
