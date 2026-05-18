@@ -19,6 +19,7 @@ const app = express();
 app.use(
   cors({
     origin: [
+      "https://kkcart.vercel.app",
       "http://localhost:5173",
       "https://kkcart-lhfg.vercel.app",
       "https://kkcart-lhfg.vercel.app/",
