@@ -1,16 +1,20 @@
 const categories = [
   { name: "All", emoji: "🛒", color: "bg-orange-50" },
+
+  // Grocery
   { name: "Fruits", emoji: "🍎", color: "bg-red-50" },
   { name: "Vegetables", emoji: "🥦", color: "bg-green-50" },
   { name: "Dairy", emoji: "🥛", color: "bg-blue-50" },
   { name: "Snacks", emoji: "🍪", color: "bg-yellow-50" },
   { name: "Beverages", emoji: "🥤", color: "bg-purple-50" },
   { name: "Bakery", emoji: "🍞", color: "bg-orange-50" },
-  { name: "Rice & Atta", emoji: "🌾", color: "bg-lime-50" },
-  { name: "Cleaning", emoji: "🧽", color: "bg-cyan-50" },
-  { name: "Personal Care", emoji: "🧴", color: "bg-pink-50" },
-];
 
+  // Meat Category
+  { name: "Meat & Fish", emoji: "🍗", color: "bg-red-100" },
+
+  // Sweet Category
+  { name: "Sweets", emoji: "🍰", color: "bg-pink-100" }
+];
 export default function CategoryCard({ selectedCategory, setSelectedCategory }) {
   return (
     <section className="max-w-7xl mx-auto px-4 py-7">

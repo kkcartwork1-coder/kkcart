@@ -12,12 +12,12 @@ export default function Home() {
       <Header />
       <Hero />
 
-      <CategoryCard
+      {/* <CategoryCard
         selectedCategory={selectedCategory}
         setSelectedCategory={setSelectedCategory}
-      />
+      /> */}
 
-      <ProductCard selectedCategory={selectedCategory} />
+      {/* <ProductCard selectedCategory={selectedCategory} /> */}
     </main>
   );
 }

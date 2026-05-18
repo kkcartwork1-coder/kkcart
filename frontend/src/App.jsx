@@ -15,6 +15,8 @@ import Profile from "./pages/Profile";
 import AdminDashboard from "./pages/AdminDashboard";
 import ProductDetails from "./pages/ProductDetails";
 import OrderSuccess from "./pages/OrderSuccess";
+import FoodHome from "./pages/FoodHome";
+import GroceryHome from "./pages/GroceryHome";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -38,6 +40,8 @@ function App() {
       <Routes>
         
         <Route path="/" element={<Home />} />
+        <Route path="/grocery" element={<GroceryHome />} />
+        <Route path="/food" element={<FoodHome />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/order-success" element={<OrderSuccess />} />
