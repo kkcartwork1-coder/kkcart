@@ -21,6 +21,7 @@ app.use(
     origin: [
       "http://localhost:5173",
       "https://kkcart-lhfg.vercel.app",
+      "https://kkcart-lhfg.vercel.app/",
       "https://kkcart.store",
       "https://www.kkcart.store"
     ],
