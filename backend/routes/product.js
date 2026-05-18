@@ -171,6 +171,21 @@ router.post(
   upload.single("image"),
   async (req, res) => {
     try {
+      // const product = new Product({
+      //   name: req.body.name,
+
+      //   price: req.body.price,
+
+      //   category: req.body.category,
+
+      //   type: req.body.type,
+
+      //   stock: req.body.stock,
+
+      //   description: req.body.description,
+
+      //   image: `http://localhost:5000/uploads/${req.file.filename}`,
+      // });
       const product = new Product({
         name: req.body.name,
 
@@ -184,9 +199,10 @@ router.post(
 
         description: req.body.description,
 
-        image: `http://localhost:5000/uploads/${req.file.filename}`,
+        image: req.file
+          ? `${req.protocol}://${req.get("host")}/uploads/${req.file.filename}`
+          : "",
       });
-
       await product.save();
 
       res.json(product);
