@@ -398,6 +398,7 @@ const foodCategories = [
 export default function AdminProducts() {
   const [products, setProducts] = useState([]);
   const [preview, setPreview] = useState("");
+  const [editingId, setEditingId] = useState(null);
 
   const [form, setForm] = useState({
     name: "",
@@ -461,6 +462,27 @@ export default function AdminProducts() {
       toast.error(err.response?.data?.msg || "Product add failed");
     }
   };
+
+  const editProduct = (item) => {
+  setEditingId(item._id);
+
+  setForm({
+    name: item.name || "",
+    price: item.price || "",
+    type: item.type || "grocery",
+    image: null,
+    category: item.category || "",
+    stock: item.stock || "",
+    description: item.description || "",
+  });
+
+  setPreview(item.image || "");
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+};
 
   const deleteProduct = async (id) => {
     try {
@@ -587,13 +609,23 @@ export default function AdminProducts() {
             <p className="text-xs mt-1 font-bold uppercase text-gray-400">
               {item.type || "grocery"}
             </p>
+            <div className="flex gap-2 mt-3">
 
-            <button
-              onClick={() => deleteProduct(item._id)}
-              className="w-full mt-3 bg-red-500 text-white py-2 rounded-xl font-bold"
-            >
-              Delete
-            </button>
+              <button
+                onClick={() => editProduct(item)}
+                className="flex-1 bg-blue-500 text-white py-2 rounded-xl font-bold hover:scale-105 transition"
+              >
+                Edit
+              </button>
+
+              <button
+                onClick={() => deleteProduct(item._id)}
+                className="flex-1 bg-red-500 text-white py-2 rounded-xl font-bold hover:scale-105 transition"
+              >
+                Delete
+              </button>
+
+            </div>
           </div>
         ))}
       </div>

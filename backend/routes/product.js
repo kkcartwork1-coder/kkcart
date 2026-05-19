@@ -193,28 +193,56 @@ router.get("/:id", async (req, res) => {
   }
 });
 
+// UPDATE PRODUCT
+router.put(
+  "/:id",
+  upload.single("image"),
+  async (req, res) => {
+    try {
+      const updateData = {
+        name: req.body.name,
+        price: req.body.price,
+        category: req.body.category,
+        type: req.body.type,
+        stock: req.body.stock,
+        description: req.body.description,
+      };
+
+      if (req.file) {
+        updateData.image = `http://localhost:5000/uploads/${req.file.filename}`;
+      }
+
+      const updatedProduct =
+        await Product.findByIdAndUpdate(
+          req.params.id,
+          updateData,
+          { new: true }
+        );
+
+      res.json(updatedProduct);
+    } catch (err) {
+      console.log(err);
+
+      res.status(500).json({
+        msg: "Product update failed",
+      });
+    }
+  }
+);
+
+
 // DELETE PRODUCT
 router.delete("/:id", async (req, res) => {
   try {
-    const product = await Product.findByIdAndDelete(req.params.id);
-
-    if (!product) {
-      return res.status(404).json({
-        msg: "Product not found",
-      });
-    }
+    await Product.findByIdAndDelete(req.params.id);
 
     res.json({
-      msg: "Product deleted successfully",
+      msg: "Product deleted",
     });
   } catch (err) {
-    console.log("DELETE PRODUCT ERROR:", err);
-
     res.status(500).json({
       msg: "Delete failed",
-      error: err.message,
     });
   }
 });
-
 module.exports = router;

@@ -34,6 +34,11 @@ const userSchema = new mongoose.Schema(
       lowercase: true,
       trim: true,
     },
+    
+     phone: {
+    type: String,
+  },
+
 
     password: {
       type: String,
