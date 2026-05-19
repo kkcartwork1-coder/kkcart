@@ -89,8 +89,8 @@ export default function Header() {
             />
 
             <div className="leading-tight ">
-              <h1 className="text-xl md:text-2xl font-extrabold text-green-600">
-                KK<span className="text-orange-500">Cart</span>
+              <h1 className="text-xl md:text-2xl font-extrabold text-orange-500">
+                KK<span className="text-green-600">Cart</span>
               </h1>
               <p className="text-[10px] md:text-xs text-gray-500 font-medium -mt-1">
                 Fast Delivery
