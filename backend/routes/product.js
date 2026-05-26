@@ -194,41 +194,38 @@ router.get("/:id", async (req, res) => {
 });
 
 // UPDATE PRODUCT
-router.put(
-  "/:id",
-  upload.single("image"),
-  async (req, res) => {
-    try {
-      const updateData = {
-        name: req.body.name,
-        price: req.body.price,
-        category: req.body.category,
-        type: req.body.type,
-        stock: req.body.stock,
-        description: req.body.description,
-      };
+router.put("/:id", upload.single("image"), async (req, res) => {
+  try {
+    const updateData = {
+      name: req.body.name,
+      price: Number(req.body.price),
+      category: req.body.category,
+      type: req.body.type,
+      stock: Number(req.body.stock),
+      description: req.body.description,
+    };
 
-      if (req.file) {
-        updateData.image = `http://localhost:5000/uploads/${req.file.filename}`;
-      }
-
-      const updatedProduct =
-        await Product.findByIdAndUpdate(
-          req.params.id,
-          updateData,
-          { new: true }
-        );
-
-      res.json(updatedProduct);
-    } catch (err) {
-      console.log(err);
-
-      res.status(500).json({
-        msg: "Product update failed",
-      });
+    if (req.file) {
+      updateData.image =
+        `${req.protocol}://${req.get("host")}/uploads/${req.file.filename}`;
     }
+
+    const updatedProduct = await Product.findByIdAndUpdate(
+      req.params.id,
+      updateData,
+      { new: true }
+    );
+
+    res.json(updatedProduct);
+  } catch (err) {
+    console.log(err);
+
+    res.status(500).json({
+      msg: "Product update failed",
+      error: err.message,
+    });
   }
-);
+});
 
 
 // DELETE PRODUCT
