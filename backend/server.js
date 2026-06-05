@@ -12,7 +12,7 @@ const productRoutes = require("./routes/product");
 const cartRoutes = require("./routes/cart");
 const orderRoutes = require("./routes/order");
 const adminRoutes = require("./routes/admin");
-
+const deliveryRoutes = require("./routes/delivery");
 
 const app = express();
 
@@ -21,6 +21,7 @@ app.use(
     origin: [
       "https://kkcart.vercel.app",
       "http://localhost:5173",
+      "http://localhost:5174",
       "https://kkcart-lhfg.vercel.app",
       "https://kkcart-lhfg.vercel.app/",
       "https://kkcart.store",
@@ -48,6 +49,7 @@ app.use("/api/products", productRoutes);
 app.use("/api/cart", cartRoutes);
 app.use("/api/orders", orderRoutes);
 app.use("/api/admin", adminRoutes);
+app.use("/api/delivery", deliveryRoutes);
 
 mongoose
   .connect(process.env.MONGO_URI)

@@ -2,8 +2,9 @@ const categories = [
   { name: "All", emoji: "🛒", color: "bg-orange-50" },
 
   // Grocery
-  { name: "Fruits", emoji: "🍎", color: "bg-red-50" },
+  { name: "Grocery", emoji: "🛍️", color: "bg-white-50" },
   { name: "Vegetables", emoji: "🥦", color: "bg-green-50" },
+  { name: "Fruits", emoji: "🍎", color: "bg-red-50" },
   { name: "Dairy", emoji: "🥛", color: "bg-blue-50" },
   { name: "Snacks", emoji: "🍪", color: "bg-yellow-50" },
   { name: "Beverages", emoji: "🥤", color: "bg-purple-50" },

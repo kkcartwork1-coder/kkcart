@@ -25,7 +25,7 @@ function Login() {
       if (isAdmin === "true") {
         navigate("/admin");
       } else {
-        navigate("/profile");
+        navigate("/");
       }
     }
   }, [navigate]);
@@ -44,7 +44,7 @@ function Login() {
     if (user.isAdmin) {
       navigate("/admin");
     } else {
-      navigate("/profile");
+      navigate("/");
     }
   };
 

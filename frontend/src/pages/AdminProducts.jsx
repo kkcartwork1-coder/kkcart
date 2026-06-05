@@ -375,8 +375,9 @@ import API from "../api";
 import toast from "react-hot-toast";
 
 const groceryCategories = [
-  "Fruits",
+  "Grocery",
   "Vegetables",
+  "Fruits",
   "Dairy",
   "Snacks",
   "Beverages",
@@ -386,8 +387,8 @@ const groceryCategories = [
 ];
 
 const foodCategories = [
-  "Pizza",
-  "Burger",
+  "Rolls",
+  "Chowmein",
   "Biryani",
   "Meals",
   "Rolls",
@@ -583,12 +584,33 @@ export default function AdminProducts() {
           />
         )}
 
-        <button
+        {/* <button
           onClick={addProduct}
           className="bg-orange-500 text-white py-4 rounded-2xl font-black"
         >
           Add Product
-        </button>
+        </button> */}
+        <div className="flex gap-3">
+  <button
+    type="button"
+    onClick={editingId ? updateProduct : addProduct}
+    className={`flex-1 text-white py-4 rounded-2xl font-black ${
+      editingId ? "bg-blue-600" : "bg-orange-500"
+    }`}
+  >
+    {editingId ? "Update Product" : "Add Product"}
+  </button>
+
+  {editingId && (
+    <button
+      type="button"
+      onClick={resetForm}
+      className="px-6 bg-gray-200 text-gray-700 py-4 rounded-2xl font-black"
+    >
+      Cancel
+    </button>
+  )}
+</div>
       </div>
 
       <div className="grid grid-cols-2 md:grid-cols-5 gap-5">

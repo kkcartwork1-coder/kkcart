@@ -160,7 +160,7 @@ export default function Cart() {
 
   const itemTotal = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
   const deliveryFee = itemTotal > 0 ? 20 : 0;
-  const handlingFee = itemTotal > 0 ? 5 : 0;
+  const handlingFee = itemTotal > 0 ? 9 : 0;
   const discount = itemTotal >= 499 ? 50 : 0;
   const grandTotal = itemTotal + deliveryFee + handlingFee - discount;
 
@@ -298,7 +298,7 @@ export default function Cart() {
             })}
           </div>
 
-          <div className="bg-white rounded-[28px] shadow-sm border p-5">
+          {/* <div className="bg-white rounded-[28px] shadow-sm border p-5">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <Tag className="text-orange-500" />
@@ -311,7 +311,7 @@ export default function Cart() {
               </div>
               <ChevronRight className="text-gray-400" />
             </div>
-          </div>
+          </div> */}
         </div>
 
         <div className="space-y-4 h-fit sticky top-24">

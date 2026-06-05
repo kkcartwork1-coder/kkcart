@@ -17,6 +17,9 @@ import ProductDetails from "./pages/ProductDetails";
 import OrderSuccess from "./pages/OrderSuccess";
 import FoodHome from "./pages/FoodHome";
 import GroceryHome from "./pages/GroceryHome";
+import Footer from "./components/Footer";
+
+import "leaflet/dist/leaflet.css";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -45,6 +48,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/order-success" element={<OrderSuccess />} />
+        <Route path="/footer" element={<Footer />} />
         <Route
           path="/cart"
           element={
