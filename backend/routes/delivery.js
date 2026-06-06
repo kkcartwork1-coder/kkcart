@@ -90,11 +90,11 @@ const router = express.Router();
 const calculateDistance = require("../utils/distance");
 const getDeliveryFee = require("../utils/deliveryFee");
 
-// const STORE_LAT = 19.920023;
-// const STORE_LNG = 86.191796;
+const STORE_LAT = 19.919987
+const STORE_LNG = 86.191783;
 
-const STORE_LAT = 20.303876
-const STORE_LNG = 85.847381
+// const STORE_LAT = 20.303876
+// const STORE_LNG = 85.847381
 
 router.post("/check", async (req, res) => {
   try {

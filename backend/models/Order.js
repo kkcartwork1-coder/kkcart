@@ -1,3 +1,5 @@
+
+
 const mongoose = require("mongoose");
 
 const orderSchema = new mongoose.Schema({
@@ -19,6 +21,12 @@ items: [
     type: String,
     default: "Pending",
   },
+
+  paymentScreenshot: {
+  type: String,
+  default: "",
+},
+
   createdAt: {
     type: Date,
     default: Date.now,

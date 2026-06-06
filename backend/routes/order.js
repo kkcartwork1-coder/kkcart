@@ -1,17 +1,79 @@
+const multer = require("multer");
+const {
+  CloudinaryStorage,
+} = require(
+  "multer-storage-cloudinary"
+);
+
+const cloudinary = require(
+  "../config/cloudinary"
+);
 const express = require("express");
 const router = express.Router();
 const Order = require("../models/Order");
 
+const storage =
+  new CloudinaryStorage({
+    cloudinary,
+    params: {
+      folder:
+        "kkcart-payment-proof",
+    },
+  });
+
+const upload =
+  multer({ storage });
+
 // Place order
-router.post("/", async (req, res) => {
-  try {
-    const order = new Order(req.body);
-    await order.save();
-    res.json(order);
-  } catch (err) {
-    res.status(500).json({ msg: "Order failed", error: err.message });
+// router.post(
+//   "/",
+//   upload.single(
+//     "paymentScreenshot"
+//   ),
+//   async (req, res) => {
+//   try {
+//     const order = new Order(req.body);
+//     await order.save();
+//     res.json(order);
+//   } catch (err) {
+//     res.status(500).json({ msg: "Order failed", error: err.message });
+//   }
+// });
+// const order = new Order({
+//   ...req.body,
+
+//   items: JSON.parse(
+//     req.body.items
+//   ),
+
+//   paymentScreenshot:
+//     req.file?.path || "",
+// });
+router.post(
+  "/",
+  upload.single("paymentScreenshot"),
+  async (req, res) => {
+    try {
+      const order = new Order({
+        ...req.body,
+
+        items: JSON.parse(req.body.items),
+
+        paymentScreenshot:
+          req.file?.path || "",
+      });
+
+      await order.save();
+
+      res.json(order);
+    } catch (err) {
+      res.status(500).json({
+        msg: "Order failed",
+        error: err.message,
+      });
+    }
   }
-});
+);
 
 // Admin: all orders
 router.get("/admin/all", async (req, res) => {

@@ -44,7 +44,7 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 app.get("/api/protected", authMiddleware, (req, res) => {
   res.json({
-    msg: "You are logged in",
+    // msg: "You are logged in",
     user: req.user,
   });
 });
