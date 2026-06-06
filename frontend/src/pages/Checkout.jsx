@@ -48,49 +48,127 @@ const [loadingLocation, setLoadingLocation] = useState(false);
   const handlingFee = itemTotal > 0 ? 5 : 0;
   const discount = coupon.toUpperCase() === "KK50" ? 50 : 0;
 
+  // const grandTotal = Math.max(
+  //   itemTotal + deliveryFee + handlingFee - discount,
+  //   0
+  // );
   const grandTotal = Math.max(
-    itemTotal + deliveryFee + handlingFee - discount,
-    0
-  );
+  itemTotal +
+    Number(deliveryFee || 0) +
+    Number(handlingFee || 0) -
+    Number(discount || 0),
+  0
+);
+
+  // const getCurrentLocation = () => {
+  //   setLoadingLocation(true);
+
+  //   navigator.geolocation.getCurrentPosition(
+  //     async (position) => {
+  //       try {
+  //         const lat = position.coords.latitude;
+  //         const lng = position.coords.longitude;
+
+  //         const res = await API.post("/delivery/check", {
+  //           lat,
+  //           lng,
+  //         });
+
+  //         setDistance(res.data.distance);
+  //         // setDeliveryFee(res.data.deliveryFee);
+  //         setDeliveryFee(Number(res.data.deliveryFee) || 0);
+  //         setDeliveryAllowed(true);
+
+  //         toast.success("Location detected");
+  //       } catch (err) {
+  //         setDeliveryAllowed(false);
+  //         setDistance(0);
+  //         setDeliveryFee(0);
+
+  //         toast.error(
+  //           err.response?.data?.message ||
+  //             "Delivery unavailable beyond 7 km"
+  //         );
+  //       } finally {
+  //         setLoadingLocation(false);
+  //       }
+  //     },
+  //     () => {
+  //       setLoadingLocation(false);
+  //       toast.error("Location permission denied");
+  //     }
+  //   );
+  // };
 
   const getCurrentLocation = () => {
-    setLoadingLocation(true);
+  setLoadingLocation(true);
 
-    navigator.geolocation.getCurrentPosition(
-      async (position) => {
-        try {
-          const lat = position.coords.latitude;
-          const lng = position.coords.longitude;
+  navigator.geolocation.getCurrentPosition(
+    async (position) => {
+      try {
+        const lat = position.coords.latitude;
+        const lng = position.coords.longitude;
 
-          const res = await API.post("/delivery/check", {
-            lat,
-            lng,
-          });
+        // Delivery Check
+        const deliveryRes = await API.post(
+          "/delivery/check",
+          { lat, lng }
+        );
 
-          setDistance(res.data.distance);
-          setDeliveryFee(res.data.deliveryFee);
-          setDeliveryAllowed(true);
+        setDistance(deliveryRes.data.distance || 0);
+        setDeliveryFee(
+          Number(deliveryRes.data.deliveryFee) || 0
+        );
 
-          toast.success("Location detected");
-        } catch (err) {
-          setDeliveryAllowed(false);
-          setDistance(0);
-          setDeliveryFee(0);
+        // Reverse Geocoding
+        const geoRes = await fetch(
+          `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json`
+        );
 
-          toast.error(
-            err.response?.data?.message ||
-              "Delivery unavailable beyond 7 km"
-          );
-        } finally {
-          setLoadingLocation(false);
-        }
-      },
-      () => {
+        const geoData = await geoRes.json();
+
+        const addr = geoData.address || {};
+
+        setAddress((prev) => ({
+          ...prev,
+          house:
+            geoData.display_name || "",
+
+          area:
+            addr.suburb ||
+            addr.neighbourhood ||
+            addr.village ||
+            "",
+
+          city:
+            addr.city ||
+            addr.town ||
+            addr.state_district ||
+            "",
+
+          pincode:
+            addr.postcode || "",
+        }));
+
+        toast.success("Location added");
+      } catch (err) {
+        console.log(err);
+
+        toast.error(
+          "Unable to fetch location"
+        );
+      } finally {
         setLoadingLocation(false);
-        toast.error("Location permission denied");
       }
-    );
-  };
+    },
+    () => {
+      setLoadingLocation(false);
+      toast.error(
+        "Location permission denied"
+      );
+    }
+  );
+};
 
   const placeOrder = async () => {
     const userId = localStorage.getItem("userId");
@@ -300,7 +378,7 @@ const [loadingLocation, setLoadingLocation] = useState(false);
                 }
                 className="border rounded-2xl p-4 outline-none focus:ring-2 focus:ring-orange-400"
               />
-
+{/* 
               {distance > 0 && (
                 <div className="mt-5 bg-orange-50 border border-orange-200 rounded-2xl p-4">
                   <p className="font-bold">
@@ -315,7 +393,7 @@ const [loadingLocation, setLoadingLocation] = useState(false);
                     0-1 km = Free, 1-2 km = ₹10, 2-5 km = ₹25, 5-7 km = ₹35,
                   </p>
                 </div>
-              )}
+              )} */}
             </div>
           </div>
 
@@ -355,6 +433,20 @@ const [loadingLocation, setLoadingLocation] = useState(false);
                 icon={<Banknote />}
                 title="Cash on Delivery"
               />
+              {/* {grandTotal >= 299 && (
+  <PayOption
+    active={paymentMethod === "COD"}
+    onClick={() => setPaymentMethod("COD")}
+    icon={<Banknote />}
+    title="Cash on Delivery"
+  />
+)} */}
+
+{/* {grandTotal < 299 && (
+  <div className="bg-yellow-50 border border-yellow-200 rounded-xl p-3 text-sm">
+    COD available only for orders above ₹299
+  </div>
+)} */}
 
               <PayOption
                 active={paymentMethod === "UPI"}
@@ -449,10 +541,15 @@ const [loadingLocation, setLoadingLocation] = useState(false);
                 label="Item Total"
                 value={`₹${itemTotal}`}
               />
-              <Row
+              {/* <Row
                 label="Delivery Fee"
                 value={`₹${deliveryFee}`}
-              />
+              /> */}
+
+              <Row
+  label="Delivery Fee"
+  value={`₹${Number(deliveryFee || 0)}`}
+/>
               <Row
                 label="Handling Fee"
                 value={`₹${handlingFee}`}

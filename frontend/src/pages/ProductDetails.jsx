@@ -90,10 +90,16 @@ export default function ProductDetails() {
     );
   }
 
+  // const imageSrc =
+  //   product.image && product.image.trim() !== ""
+  //     ? product.image
+  //     : "/products/default.jpg";
   const imageSrc =
-    product.image && product.image.trim() !== ""
-      ? product.image
-      : "/products/default.jpg";
+  product.image && product.image.trim() !== ""
+    ? product.image
+        .replace("http://localhost:5000", "https://kkcart-backend.onrender.com")
+        .replace("http://", "https://")
+    : "/products/default.jpg";
 
   return (
     <main className="min-h-screen bg-[#f7f7f7] px-4 py-6">

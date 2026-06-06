@@ -391,7 +391,6 @@ const foodCategories = [
   "Chowmein",
   "Biryani",
   "Meals",
-  "Rolls",
   "Chinese",
   "Drinks",
 ];
