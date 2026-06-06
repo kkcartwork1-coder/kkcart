@@ -211,8 +211,8 @@ export default function Header() {
   // const STORE_LAT = 20.2961;
   // const STORE_LON = 85.8245;
 
-    const STORE_LAT = 19.920023;
-  const STORE_LON = 86.191796;
+  const STORE_LAT = 19.919987;
+  const STORE_LON = 86.191783;
   useEffect(() => {
     getUserLocation();
   }, []);
