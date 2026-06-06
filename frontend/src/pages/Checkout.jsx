@@ -100,8 +100,84 @@ const [loadingLocation, setLoadingLocation] = useState(false);
   //   );
   // };
 
+//   const getCurrentLocation = () => {
+//   setLoadingLocation(true);
+
+//   navigator.geolocation.getCurrentPosition(
+//     async (position) => {
+//       try {
+//         const lat = position.coords.latitude;
+//         const lng = position.coords.longitude;
+
+//         // Delivery Check
+//         const deliveryRes = await API.post(
+//           "/delivery/check",
+//           { lat, lng }
+//         );
+
+//         setDistance(deliveryRes.data.distance || 0);
+//         setDeliveryFee(
+//           Number(deliveryRes.data.deliveryFee) || 0
+//         );
+
+//         // Reverse Geocoding
+//         const geoRes = await fetch(
+//           `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json`
+//         );
+
+//         const geoData = await geoRes.json();
+
+//         const addr = geoData.address || {};
+
+//         setAddress((prev) => ({
+//           ...prev,
+//           house:
+//             geoData.display_name || "",
+
+//           area:
+//             addr.suburb ||
+//             addr.neighbourhood ||
+//             addr.village ||
+//             "",
+
+//           city:
+//             addr.city ||
+//             addr.town ||
+//             addr.state_district ||
+//             "",
+
+//           pincode:
+//             addr.postcode || "",
+//         }));
+
+//         toast.success("Location added");
+//       } catch (err) {
+//         console.log(err);
+
+//         toast.error(
+//           "Unable to fetch location"
+//         );
+//       } finally {
+//         setLoadingLocation(false);
+//       }
+//     },
+//     () => {
+//       setLoadingLocation(false);
+//       toast.error(
+//         "Location permission denied"
+//       );
+//     }
+//   );
+// };
+
   const getCurrentLocation = () => {
   setLoadingLocation(true);
+
+  if (!navigator.geolocation) {
+    toast.error("Geolocation not supported in this browser");
+    setLoadingLocation(false);
+    return;
+  }
 
   navigator.geolocation.getCurrentPosition(
     async (position) => {
@@ -109,16 +185,16 @@ const [loadingLocation, setLoadingLocation] = useState(false);
         const lat = position.coords.latitude;
         const lng = position.coords.longitude;
 
+        console.log("Location:", lat, lng);
+
         // Delivery Check
-        const deliveryRes = await API.post(
-          "/delivery/check",
-          { lat, lng }
-        );
+        const deliveryRes = await API.post("/delivery/check", {
+          lat,
+          lng,
+        });
 
         setDistance(deliveryRes.data.distance || 0);
-        setDeliveryFee(
-          Number(deliveryRes.data.deliveryFee) || 0
-        );
+        setDeliveryFee(Number(deliveryRes.data.deliveryFee) || 0);
 
         // Reverse Geocoding
         const geoRes = await fetch(
@@ -131,41 +207,56 @@ const [loadingLocation, setLoadingLocation] = useState(false);
 
         setAddress((prev) => ({
           ...prev,
-          house:
-            geoData.display_name || "",
-
+          house: geoData.display_name || "",
           area:
             addr.suburb ||
             addr.neighbourhood ||
             addr.village ||
             "",
-
           city:
             addr.city ||
             addr.town ||
             addr.state_district ||
             "",
-
-          pincode:
-            addr.postcode || "",
+          pincode: addr.postcode || "",
         }));
 
-        toast.success("Location added");
+        toast.success("Location detected successfully");
       } catch (err) {
-        console.log(err);
-
-        toast.error(
-          "Unable to fetch location"
-        );
+        console.log("LOCATION PROCESS ERROR:", err);
+        toast.error("Failed to process location");
       } finally {
         setLoadingLocation(false);
       }
     },
-    () => {
+
+    (error) => {
+      console.log("GEOLOCATION ERROR:", error);
+
       setLoadingLocation(false);
-      toast.error(
-        "Location permission denied"
-      );
+
+      switch (error.code) {
+        case error.PERMISSION_DENIED:
+          toast.error("Permission denied. Enable location access.");
+          break;
+
+        case error.POSITION_UNAVAILABLE:
+          toast.error("Location unavailable. Turn on GPS.");
+          break;
+
+        case error.TIMEOUT:
+          toast.error("Location request timed out.");
+          break;
+
+        default:
+          toast.error("Unable to find location.");
+      }
+    },
+
+    {
+      enableHighAccuracy: true,
+      timeout: 15000,
+      maximumAge: 0,
     }
   );
 };
