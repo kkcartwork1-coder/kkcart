@@ -4,6 +4,7 @@ const cors = require("cors");
 const path = require("path"); // ✅ add this
 require("dotenv").config();
 
+
 const authMiddleware = require("./middleware/auth");
 
 // Routes
@@ -15,6 +16,8 @@ const adminRoutes = require("./routes/admin");
 const deliveryRoutes = require("./routes/delivery");
 
 const app = express();
+
+
 
 app.use(
   cors({
@@ -32,7 +35,9 @@ app.use(
   })
 );
 
+// app.use(express.json());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // ✅ make uploads folder public
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
