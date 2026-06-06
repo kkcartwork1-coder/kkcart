@@ -622,6 +622,7 @@ await API.post(
   </div>
 )} */}
 
+
               <PayOption
                 active={paymentMethod === "UPI"}
                 onClick={() =>
@@ -630,35 +631,38 @@ await API.post(
                 icon={<Smartphone />}
                 title="UPI Payment"
               />
-              <div className="bg-orange-50 p-4 rounded-2xl mt-4">
-  <p className="font-bold">
-    UPI ID
-  </p>
 
-  <p className="text-green-600 font-black">
-    kkcute6253-5@okaxis
-  </p>
-</div>
-<div className="mt-4 text-center">
-  <img
-    src="/upi.jpeg"
-    alt="UPI QR"
-    className="w-56 mx-auto rounded-2xl border"
-  />
+              {paymentMethod === "UPI" && (
+                <>
+                  <div className="bg-orange-50 p-4 rounded-2xl mt-4">
+                    <p className="font-bold">UPI ID</p>
+                    <p className="text-green-600 font-black">
+                      kkcute6253-5@okaxis
+                    </p>
+                  </div>
 
-  <p className="text-sm mt-2 text-gray-500">
-    Scan & Pay
-  </p>
-</div>
+                  <div className="mt-4 text-center">
+                    <img
+                      src="/upi.jpeg"
+                      alt="UPI QR"
+                      className="w-56 mx-auto rounded-2xl border"
+                    />
+                    <p className="text-sm mt-2 text-gray-500">
+                      Scan & Pay
+                    </p>
+                  </div>
 
-<input
-  type="file"
-  accept="image/*"
-  onChange={(e) =>
-    setPaymentScreenshot(e.target.files[0])
-  }
-  className="w-full mt-4"
-/>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={(e) =>
+                      setPaymentScreenshot(e.target.files[0])
+                    }
+                    className="w-full mt-4 border rounded-2xl p-4"
+                  />
+                </>
+              )}
+
 
             </div>
 
