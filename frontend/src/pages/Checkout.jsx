@@ -18,7 +18,11 @@ import { CartContext } from "../context/CartContext";
 
 export default function Checkout() {
   const navigate = useNavigate();
-  const { cart, clearCart } = useContext(CartContext);
+  const { cart, clearCart,  increaseQty,
+  decreaseQty } = useContext(CartContext);
+
+  const [paymentScreenshot, setPaymentScreenshot] =
+  useState(null);
 
   const [address, setAddress] = useState({
     fullName: "",
@@ -221,6 +225,23 @@ const [loadingLocation, setLoadingLocation] = useState(false);
           pincode: addr.postcode || "",
         }));
 
+        useEffect(() => {
+  const savedAddress =
+    localStorage.getItem("deliveryAddress");
+
+  if (savedAddress) {
+    setAddress(JSON.parse(savedAddress));
+  }
+}, []);
+
+
+useEffect(() => {
+  localStorage.setItem(
+    "deliveryAddress",
+    JSON.stringify(address)
+  );
+}, [address]);
+
         toast.success("Location detected successfully");
       } catch (err) {
         console.log("LOCATION PROCESS ERROR:", err);
@@ -306,20 +327,82 @@ const [loadingLocation, setLoadingLocation] = useState(false);
     try {
       setPlacing(true);
 
-      await API.post("/orders", {
-        userId,
-        items: cart.map((item) => ({
-          productId: item._id,
-          quantity: item.qty,
-        })),
-        address: `${address.fullName}, ${address.phone}, ${address.house}, ${address.area}, ${address.landmark}, ${address.city} - ${address.pincode}`,
-        paymentMethod,
-        transactionId,
-        totalAmount: grandTotal,
-        paymentStatus:
-          paymentMethod === "COD" ? "Pending" : "Paid",
-        orderStatus: "Pending",
-      });
+      // await API.post("/orders", {
+      //   userId,
+      //   items: cart.map((item) => ({
+      //     productId: item._id,
+      //     quantity: item.qty,
+      //   })),
+      //   address: `${address.fullName}, ${address.phone}, ${address.house}, ${address.area}, ${address.landmark}, ${address.city} - ${address.pincode}`,
+      //   paymentMethod,
+      //   transactionId,
+      //   totalAmount: grandTotal,
+      //   paymentStatus:
+      //     paymentMethod === "COD" ? "Pending" : "Paid",
+      //   orderStatus: "Pending",
+      // });
+      const formData = new FormData();
+
+formData.append("userId", userId);
+
+formData.append(
+  "items",
+  JSON.stringify(
+    cart.map((item) => ({
+      productId: item._id,
+      quantity: item.qty,
+    }))
+  )
+);
+
+formData.append(
+  "address",
+  `${address.fullName},
+   ${address.phone},
+   ${address.house},
+   ${address.area},
+   ${address.city}`
+);
+
+formData.append(
+  "paymentMethod",
+  paymentMethod
+);
+
+formData.append(
+  "transactionId",
+  transactionId
+);
+
+formData.append(
+  "totalAmount",
+  grandTotal
+);
+
+formData.append(
+  "paymentStatus",
+  paymentMethod === "COD"
+    ? "Pending"
+    : "Paid"
+);
+
+if (paymentScreenshot) {
+  formData.append(
+    "paymentScreenshot",
+    paymentScreenshot
+  );
+}
+
+await API.post(
+  "/orders",
+  formData,
+  {
+    headers: {
+      "Content-Type":
+        "multipart/form-data",
+    },
+  }
+);
 
       clearCart();
       navigate("/order-success");
@@ -547,6 +630,35 @@ const [loadingLocation, setLoadingLocation] = useState(false);
                 icon={<Smartphone />}
                 title="UPI Payment"
               />
+              <div className="bg-orange-50 p-4 rounded-2xl mt-4">
+  <p className="font-bold">
+    UPI ID
+  </p>
+
+  <p className="text-green-600 font-black">
+    kkcute6253-5@okaxis
+  </p>
+</div>
+<div className="mt-4 text-center">
+  <img
+    src="/upi.jpeg"
+    alt="UPI QR"
+    className="w-56 mx-auto rounded-2xl border"
+  />
+
+  <p className="text-sm mt-2 text-gray-500">
+    Scan & Pay
+  </p>
+</div>
+
+<input
+  type="file"
+  accept="image/*"
+  onChange={(e) =>
+    setPaymentScreenshot(e.target.files[0])
+  }
+  className="w-full mt-4"
+/>
 
             </div>
 
@@ -559,6 +671,7 @@ const [loadingLocation, setLoadingLocation] = useState(false);
                 placeholder="Enter UPI transaction ID"
                 className="w-full mt-4 border rounded-2xl p-4 outline-none focus:ring-2 focus:ring-orange-400"
               />
+              
             )}
           </div>
 
@@ -615,9 +728,28 @@ const [loadingLocation, setLoadingLocation] = useState(false);
                       {item.name}
                     </h4>
 
-                    <p className="text-xs text-gray-500">
+                    {/* <p className="text-xs text-gray-500">
                       Qty {item.qty}
-                    </p>
+                    </p> */}
+                    <div className="flex items-center gap-2 mt-2">
+  <button
+    onClick={() => decreaseQty(item._id)}
+    className="w-7 h-7 rounded-lg bg-gray-100 font-bold"
+  >
+    -
+  </button>
+
+  <span className="font-bold">
+    {item.qty}
+  </span>
+
+  <button
+    onClick={() => increaseQty(item._id)}
+    className="w-7 h-7 rounded-lg bg-orange-500 text-white font-bold"
+  >
+    +
+  </button>
+</div>
                   </div>
 
                   <p className="font-black text-sm">

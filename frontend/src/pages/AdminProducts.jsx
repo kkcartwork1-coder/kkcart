@@ -494,6 +494,52 @@ export default function AdminProducts() {
     }
   };
 
+  const updateProduct = async () => {
+    if (!form.name || !form.price || !form.type || !form.category || !form.stock) {
+      toast.error("Please fill all required fields");
+      return;
+    }
+
+    try {
+      const formData = new FormData();
+
+      formData.append("name", form.name);
+      formData.append("price", form.price);
+      formData.append("type", form.type);
+      formData.append("category", form.category);
+      formData.append("stock", form.stock);
+      formData.append("description", form.description);
+
+      if (form.image) {
+        formData.append("image", form.image);
+      }
+
+      await API.put(`/products/${editingId}`, formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+
+      toast.success("Product Updated");
+      resetForm();
+      fetchProducts();
+    } catch (err) {
+      toast.error(err.response?.data?.msg || "Product update failed");
+    }
+  };
+
+  const resetForm = () => {
+    setEditingId(null);
+    setForm({
+      name: "",
+      price: "",
+      type: "grocery",
+      image: null,
+      category: "",
+      stock: "",
+      description: "",
+    });
+    setPreview("");
+  };
+
   const categories =
     form.type === "food" ? foodCategories : groceryCategories;
 
@@ -503,118 +549,130 @@ export default function AdminProducts() {
         Admin Products
       </h1>
 
-      <div className="bg-white p-5 rounded-3xl shadow grid gap-4 mb-8">
-        <input
-          placeholder="Product Name"
-          className="border p-3 rounded-xl"
-          value={form.name}
-          onChange={(e) => setForm({ ...form, name: e.target.value })}
-        />
+      <div className="bg-white p-4 md:p-6 rounded-3xl shadow mb-8">
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 
-        <input
-          placeholder="Price"
-          type="number"
-          className="border p-3 rounded-xl"
-          value={form.price}
-          onChange={(e) => setForm({ ...form, price: e.target.value })}
-        />
+    <input
+      placeholder="Product Name"
+      className="border p-3 rounded-xl w-full"
+      value={form.name}
+      onChange={(e) => setForm({ ...form, name: e.target.value })}
+    />
 
-        <select
-          className="border p-3 rounded-xl"
-          value={form.type}
-          onChange={(e) =>
-            setForm({
-              ...form,
-              type: e.target.value,
-              category: "",
-            })
-          }
-        >
-          <option value="grocery">Grocery</option>
-          <option value="food">Food</option>
-        </select>
+    <input
+      placeholder="Price"
+      type=""
+      className="border p-3 rounded-xl w-full"
+      value={form.price}
+      onChange={(e) => setForm({ ...form, price: e.target.value })}
+    />
 
-        <select
-          className="border p-3 rounded-xl"
-          value={form.category}
-          onChange={(e) => setForm({ ...form, category: e.target.value })}
-        >
-          <option value="">Select Category</option>
-          {categories.map((cat) => (
-            <option key={cat} value={cat}>
-              {cat}
-            </option>
-          ))}
-        </select>
+    <select
+      className="border p-3 rounded-xl w-full"
+      value={form.type}
+      onChange={(e) =>
+        setForm({
+          ...form,
+          type: e.target.value,
+          category: "",
+        })
+      }
+    >
+      <option value="grocery">Grocery</option>
+      <option value="food">Food</option>
+    </select>
 
-        <input
-          placeholder="Stock"
-          type="number"
-          className="border p-3 rounded-xl"
-          value={form.stock}
-          onChange={(e) => setForm({ ...form, stock: e.target.value })}
-        />
+    <select
+      className="border p-3 rounded-xl w-full"
+      value={form.category}
+      onChange={(e) =>
+        setForm({ ...form, category: e.target.value })
+      }
+    >
+      <option value="">Select Category</option>
+      {categories.map((cat) => (
+        <option key={cat} value={cat}>
+          {cat}
+        </option>
+      ))}
+    </select>
 
-        <textarea
-          placeholder="Description"
-          className="border p-3 rounded-xl"
-          value={form.description}
-          onChange={(e) => setForm({ ...form, description: e.target.value })}
-        />
+    <input
+      placeholder="Stock"
+      type=""
+      className="border p-3 rounded-xl w-full"
+      value={form.stock}
+      onChange={(e) =>
+        setForm({ ...form, stock: e.target.value })
+      }
+    />
 
-        <input
-          type="file"
-          accept="image/*"
-          onChange={(e) => {
-            const file = e.target.files[0];
-            setForm({ ...form, image: file });
+    <input
+      type="file"
+      accept="image/*"
+      className="border p-3 rounded-xl w-full"
+      onChange={(e) => {
+        const file = e.target.files[0];
+        setForm({ ...form, image: file });
 
-            if (file) {
-              setPreview(URL.createObjectURL(file));
-            }
-          }}
-        />
+        if (file) {
+          setPreview(URL.createObjectURL(file));
+        }
+      }}
+    />
+  </div>
 
-        {preview && (
-          <img
-            src={preview}
-            alt="preview"
-            className="w-32 h-32 object-cover rounded-2xl border"
-          />
-        )}
+  <textarea
+    placeholder="Description"
+    className="border p-3 rounded-xl w-full mt-4"
+    rows={4}
+    value={form.description}
+    onChange={(e) =>
+      setForm({ ...form, description: e.target.value })
+    }
+  />
 
-        {/* <button
-          onClick={addProduct}
-          className="bg-orange-500 text-white py-4 rounded-2xl font-black"
-        >
-          Add Product
-        </button> */}
-        <div className="flex gap-3">
-  <button
-    type="button"
-    onClick={editingId ? updateProduct : addProduct}
-    className={`flex-1 text-white py-4 rounded-2xl font-black ${
-      editingId ? "bg-blue-600" : "bg-orange-500"
-    }`}
-  >
-    {editingId ? "Update Product" : "Add Product"}
-  </button>
+  {preview && (
+    <div className="mt-4 flex justify-center">
+      <img
+        src={preview}
+        alt="preview"
+        className="w-32 h-32 md:w-40 md:h-40 object-cover rounded-2xl border"
+      />
+    </div>
+  )}
 
-  {editingId && (
+  <div className="flex flex-col md:flex-row gap-3 mt-5">
     <button
       type="button"
-      onClick={resetForm}
-      className="px-6 bg-gray-200 text-gray-700 py-4 rounded-2xl font-black"
+      onClick={editingId ? updateProduct : addProduct}
+      className={`flex-1 text-white py-4 rounded-2xl font-black ${
+        editingId ? "bg-blue-600" : "bg-orange-500"
+      }`}
     >
-      Cancel
+      {editingId ? "Update Product" : "Add Product"}
     </button>
-  )}
-</div>
-      </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-5 gap-5">
+    {editingId && (
+      <button
+        type="button"
+        onClick={resetForm}
+        className="md:w-auto w-full px-6 bg-gray-200 text-gray-700 py-4 rounded-2xl font-black"
+      >
+        Cancel
+      </button>
+    )}
+  </div>
+</div>
+
+      {/* <div className="grid grid-cols-2 md:grid-cols-5 gap-5"> */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5">
         {products.map((item) => (
-          <div key={item._id} className="bg-white rounded-3xl shadow p-4">
+          // <div key={item._id} className="bg-white rounded-3xl shadow p-4">
+          <div
+  key={item._id}
+  className="bg-white rounded-3xl shadow p-4 hover:shadow-xl transition"
+>
             <img
               src={item.image}
               alt={item.name}

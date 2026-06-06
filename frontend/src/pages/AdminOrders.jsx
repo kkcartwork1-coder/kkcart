@@ -93,6 +93,17 @@ export default function AdminOrders() {
                   value={order.transactionId}
                 />
               )}
+              {
+  order.paymentScreenshot && (
+    <img
+      src={
+        order.paymentScreenshot
+      }
+      alt="Payment Proof"
+      className="w-32 rounded-xl border mt-2"
+    />
+  )
+}
 
               <Info
                 icon={<Truck size={18} />}
