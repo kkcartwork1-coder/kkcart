@@ -208,11 +208,14 @@ export default function Header() {
   const userName = user.name ? user.name.split(" ")[0] : "Profile";
 
   // 🔥 YOUR STORE LOCATION (CHANGE THIS)
-  // const STORE_LAT = 20.2961;
-  // const STORE_LON = 85.8245;
+  const STORE_LAT = 20.303900;
+  const STORE_LON = 85.847385;
 
-  const STORE_LAT = 19.919987;
-  const STORE_LON = 86.191783;
+
+
+  // const STORE_LAT = 19.9200040;
+  // const STORE_LON = 86.1917933;
+  
   useEffect(() => {
     getUserLocation();
   }, []);
@@ -261,7 +264,10 @@ export default function Header() {
             "Your Area";
 
           const state = data.address.state || "";
-          const fullAddress = `${area}, ${state}`;
+          // const fullAddress = `${area}, ${state}`;
+          setLocation(area);
+localStorage.setItem("deliveryAddress", area);
+
 
           // 📏 Distance calculation
           const dist = getDistanceKm(

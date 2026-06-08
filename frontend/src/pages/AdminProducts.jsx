@@ -561,7 +561,7 @@ export default function AdminProducts() {
 
     <input
       placeholder="Price"
-      type=""
+      // type="text"
       className="border p-3 rounded-xl w-full"
       value={form.price}
       onChange={(e) => setForm({ ...form, price: e.target.value })}
@@ -599,7 +599,7 @@ export default function AdminProducts() {
 
     <input
       placeholder="Stock"
-      type=""
+      // type="text"
       className="border p-3 rounded-xl w-full"
       value={form.stock}
       onChange={(e) =>
