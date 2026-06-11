@@ -1205,56 +1205,84 @@ export default function Hero() {
         </div>
 
         {/* ========================================================================= */}
-        {/* 2. MOBILE ONLY: QUICK CHIP CARDS                                          */}
+        {/* 2. MOBILE ONLY: QUICK CHIP CARDS (CRASH-PROOF GRID FOR ALL DEVICES)       */}
         {/* ========================================================================= */}
-        <div className="flex md:hidden gap-4 overflow-x-auto pb-2 scrollbar-none no-scrollbar snap-x scroll-smooth w-full px-2">
-          {/* 🍳 1. THE KK-KITCHEN SLICK SPLIT-PANEL */}
-          <button
-            type="button"
-            onClick={() => navigate("/food")}
-            className="relative min-w-[175px] h-[105px] rounded-[24px] bg-[#0E0B08] text-white border border-[#2D1B10] shadow-md overflow-hidden active:scale-[0.97] transition-all duration-300 shrink-0 snap-start flex group text-left"
-          >
-            <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-[#FC8019] to-transparent" />
-            <div className="w-[58%] p-3.5 flex flex-col justify-between z-20 h-full">
-              <span className="text-[8px] font-black uppercase tracking-widest text-[#FC8019]/80">Cloud Kitchen</span>
-              <div>
-                <h3 className="text-xs font-black tracking-tight text-white leading-tight">KKKitchen</h3>
-                <p className="text-[9px] text-gray-400 font-bold mt-0.5 tracking-tight">Fresh Meals</p>
-              </div>
-            </div>
-            <div className="w-[42%] h-full absolute right-0 top-0 bottom-0 overflow-hidden select-none pointer-events-none">
-              <img
-                src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=200&q=80"
-                alt="KKKitchen Premium Food"
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#0E0B08] via-[#0E0B08]/40 to-transparent" />
-            </div>
-          </button>
+        <div className="block md:hidden w-full px-0.5">
+          <div className="grid grid-cols-2 gap-3 w-full">
 
-          {/* 🍏 2. THE KK-MART SLICK SPLIT-PANEL */}
-          <button
-            type="button"
-            onClick={() => navigate("/grocery")}
-            className="relative min-w-[175px] h-[105px] rounded-[24px] bg-[#070A08] text-white border border-[#122317] shadow-md overflow-hidden active:scale-[0.97] transition-all duration-300 shrink-0 snap-start flex group text-left"
-          >
-            <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-[#10B981] to-transparent" />
-            <div className="w-[58%] p-3.5 flex flex-col justify-between z-20 h-full">
-              <span className="text-[8px] font-black uppercase tracking-widest text-[#10B981]/80">Flash Drop</span>
-              <div>
-                <h3 className="text-xs font-black tracking-tight text-white leading-tight">KKMart</h3>
-                <p className="text-[9px] text-gray-400 font-bold mt-0.5 tracking-tight">10 Min Drop</p>
+            {/* 🍳 1. THE KK-KITCHEN SLICK SPLIT-PANEL */}
+            <button
+              type="button"
+              onClick={() => navigate("/food")}
+              className="relative w-full h-[105px] rounded-[24px] bg-[#0E0B08] text-white border border-[#2D1B10] shadow-md overflow-hidden active:scale-[0.97] transition-all duration-300 flex group text-left"
+            >
+              {/* Micro Neon Accent Strip */}
+              <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-[#FC8019] to-transparent" />
+
+              {/* Left Info Column */}
+              <div className="w-[58%] p-3.5 flex flex-col justify-between z-20 h-full">
+                <span className="text-[8px] font-black uppercase tracking-widest text-[#FC8019]/80">
+                  Cloud Kitchen
+                </span>
+                <div>
+                  <h3 className="text-xs font-black tracking-tight text-white leading-tight">
+                    KKKitchen
+                  </h3>
+                  <p className="text-[9px] text-gray-400 font-bold mt-0.5 tracking-tight">
+                    Fresh Meals
+                  </p>
+                </div>
               </div>
-            </div>
-            <div className="w-[42%] h-full absolute right-0 top-0 bottom-0 overflow-hidden select-none pointer-events-none">
-              <img
-                src="https://images.unsplash.com/photo-1610348725531-843dff563e2c?auto=format&fit=crop&w=200&q=80"
-                alt="KKMart Fresh Groceries"
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#070A08] via-[#070A08]/40 to-transparent" />
-            </div>
-          </button>
+
+              {/* Right Image Frame with Angled Geometric Split Cut */}
+              <div className="w-[42%] h-full absolute right-0 top-0 bottom-0 overflow-hidden select-none pointer-events-none">
+                <img
+                  src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=200&q=80"
+                  alt="KKKitchen Premium Food"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                {/* High-end smooth internal alpha-fade shroud */}
+                <div className="absolute inset-0 bg-gradient-to-r from-[#0E0B08] via-[#0E0B08]/40 to-transparent" />
+              </div>
+            </button>
+
+            {/* 🍏 2. THE KK-MART SLICK SPLIT-PANEL */}
+            <button
+              type="button"
+              onClick={() => navigate("/grocery")}
+              className="relative w-full h-[105px] rounded-[24px] bg-[#070A08] text-white border border-[#122317] shadow-md overflow-hidden active:scale-[0.97] transition-all duration-300 flex group text-left"
+            >
+              {/* Micro Neon Accent Strip */}
+              <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-[#10B981] to-transparent" />
+
+              {/* Left Info Column */}
+              <div className="w-[58%] p-3.5 flex flex-col justify-between z-20 h-full">
+                <span className="text-[8px] font-black uppercase tracking-widest text-[#10B981]/80">
+                  Flash Drop
+                </span>
+                <div>
+                  <h3 className="text-xs font-black tracking-tight text-white leading-tight">
+                    KKMart
+                  </h3>
+                  <p className="text-[9px] text-gray-400 font-bold mt-0.5 tracking-tight">
+                    10 Min Drop
+                  </p>
+                </div>
+              </div>
+
+              {/* Right Image Frame with Angled Geometric Split Cut */}
+              <div className="w-[42%] h-full absolute right-0 top-0 bottom-0 overflow-hidden select-none pointer-events-none">
+                <img
+                  src="https://images.unsplash.com/photo-1610348725531-843dff563e2c?auto=format&fit=crop&w=200&q=80"
+                  alt="KKMart Fresh Groceries"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                {/* High-end smooth internal alpha-fade shroud */}
+                <div className="absolute inset-0 bg-gradient-to-r from-[#070A08] via-[#070A08]/40 to-transparent" />
+              </div>
+            </button>
+
+          </div>
         </div>
 
         {/* ========================================================================= */}
