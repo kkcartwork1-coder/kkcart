@@ -720,13 +720,13 @@ export default function Hero() {
           </button>
         </div> */}
 
-        <div className="flex md:hidden gap-4 overflow-x-auto px-5 scrollbar-none no-scrollbar snap-x scroll-smooth">
+        <div className="flex md:hidden gap-3 overflow-x-fit px-auto snap-x ">
 
           {/* 🍳 1. THE KK-KITCHEN SLICK SPLIT-PANEL */}
           <button
             type="button"
             onClick={() => navigate("/food")}
-            className="relative min-w-[160px] h-[105px] rounded-[24px] bg-[#0E0B08] text-white border border-[#2D1B10] shadow-xl overflow-hidden active:scale-[0.97] transition-all duration-300 shrink-0 snap-start flex group text-left"
+            className="relative min-w-[180px] h-[105px] rounded-[24px] bg-[#0E0B08] text-white border border-[#2D1B10] shadow-xl overflow-hidden active:scale-[0.97] transition-all duration-300 shrink-0 snap-start flex group text-left"
           >
             {/* Micro Neon Accent Strip */}
             <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-[#FC8019] to-transparent" />
@@ -762,7 +762,7 @@ export default function Hero() {
           <button
             type="button"
             onClick={() => navigate("/grocery")}
-            className="relative min-w-[160px] h-[105px] rounded-[24px] bg-[#070A08] text-white border border-[#122317] shadow-xl overflow-hidden active:scale-[0.97] transition-all duration-300 shrink-0 snap-start flex group text-left"
+            className="relative min-w-[180px] h-[105px] rounded-[24px] bg-[#070A08] text-white border border-[#122317] shadow-xl overflow-hidden active:scale-[0.97] transition-all duration-300 shrink-0 snap-start flex group text-left"
           >
             {/* Micro Neon Accent Strip */}
             <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-[#10B981] to-transparent" />
