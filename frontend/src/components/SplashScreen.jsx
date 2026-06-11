@@ -205,14 +205,14 @@ export default function SplashScreen() {
       <div className="relative z-10 w-full max-w-xl mx-auto px-6 flex flex-col items-center justify-between h-[75vh]">
         
         {/* TOP BLOCK: ENTRY MICRO-TAGS */}
-        <div className="space-y-1.5 opacity-0 animate-slideDown flex flex-col items-center">
+        {/* <div className="space-y-1.5 opacity-0 animate-slideDown flex flex-col items-center">
           <div className="flex items-center gap-1.5 bg-white/[0.03] border border-white/10 px-3 py-1 rounded-full backdrop-blur-md shadow-2xl">
             <Sparkles size={11} className="text-amber-400 animate-pulse" />
             <span className="text-[9px] font-black uppercase tracking-widest text-amber-400/90 whitespace-nowrap">
               The Premium Standard
             </span>
           </div>
-        </div>
+        </div> */}
 
         {/* CENTER BLOCK: BRAND SYMBOL AND CORE WORDMARK */}
         <div className="flex flex-col items-center space-y-6 w-full">
@@ -239,9 +239,9 @@ export default function SplashScreen() {
 
           {/* Horizontal Decorative Segment Badges (Fades in dynamically) */}
           <div className="flex items-center justify-center gap-2.5 pt-1.5 opacity-0 animate-delayedFade w-full">
-            <Badge icon={<Trophy size={10} />} label="Gourmet Kitchen" />
+            <Badge icon={<Trophy size={10} />} label="Cloud Kitchen" />
             <div className="w-1 h-1 rounded-full bg-white/20 shrink-0" />
-            <Badge icon={<Leaf size={10} />} label="10-Min Flash Drop" />
+            <Badge icon={<Leaf size={10} />} label="30-49-Min Flash Drop" />
           </div>
         </div>
 

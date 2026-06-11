@@ -658,6 +658,65 @@ router.post("/", async (req, res) => {
     }
   });
 });
+
+// =========================================================================
+// 1. ADD NEW PRODUCT (CRASH-PROOF FALLBACK FOR TIMEOUTS)
+// =========================================================================
+// router.post("/", async (req, res) => {
+//   const handler = upload.single("image");
+  
+//   handler(req, res, async (err) => {
+//     // ⚡ PRO-FIX: If Cloudinary times out (499/Timeout), intercept it instead of crashing
+//     if (err) {
+//       console.error("⚠️ INTERCEPTED MULTER/UPLOAD TIMEOUT:", err.message);
+      
+//       // If it's a timeout error, we bypass and use a high-quality placeholder image
+//       if (err.name === "TimeoutError" || err.http_code === 499 || err.message.includes("Timeout")) {
+//         console.log("🔄 Timeout detected. Falling back to default asset token...");
+//       } else {
+//         // For other fatal errors (e.g., wrong file format), return the error normally
+//         return res.status(500).json({
+//           msg: "File structural validation failed",
+//           error: err.message,
+//         });
+//       }
+//     }
+
+//     try {
+//       console.log("📝 REQUEST BODY:", req.body);
+      
+//       // Dynamic structural assessment for image URLs
+//       let imageUrl = "https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=600&q=80"; // Crisp production fallback
+      
+//       if (req.file) {
+//         imageUrl = req.file.secure_url || req.file.url || req.file.path || imageUrl;
+//         console.log("✅ Cloudinary Asset Bound:", imageUrl);
+//       } else {
+//         console.warn("⚠️ No media processed due to network stall. Applied placeholder shield.");
+//       }
+
+//       // Safeguard parameter processing to prevent validation crashes
+//       const newProduct = new Product({
+//         name: req.body.name || "Unnamed Product",
+//         price: req.body.price || "0", 
+//         type: req.body.type || "Grocery",
+//         category: req.body.category || "General",
+//         image: imageUrl // Guaranteed to have a valid string URL mapping
+//       });
+
+//       const savedProduct = await newProduct.save();
+//       console.log("💾 CATALOG REGISTERED IN MONGODB:", savedProduct._id);
+      
+//       res.status(201).json(savedProduct);
+//     } catch (dbErr) {
+//       console.error("❌ MONGOOSE DB SAVE ERROR:", dbErr);
+//       res.status(500).json({
+//         msg: "Database schema validation drop failed",
+//         error: dbErr.message,
+//       });
+//     }
+//   });
+// });
 // =========================================================================
 // 2. GET ALL PRODUCTS
 // =========================================================================
