@@ -26,11 +26,17 @@ items: [
   type: String,
   default: "",
 },
-
+transactionId: {
+    type: String,
+    default: "",
+  },
   createdAt: {
     type: Date,
     default: Date.now,
   },
+  
 });
+
+
 
 module.exports = mongoose.model("Order", orderSchema);

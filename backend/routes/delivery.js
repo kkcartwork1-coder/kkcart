@@ -90,8 +90,8 @@ const router = express.Router();
 const calculateDistance = require("../utils/distance");
 const getDeliveryFee = require("../utils/deliveryFee");
 
-const STORE_LAT = 19.919987
-const STORE_LNG = 86.191783;
+  const STORE_LAT = 20.303900;
+  const STORE_LNG = 85.847385;
 
 // const STORE_LAT = 20.303876
 // const STORE_LNG = 85.847381

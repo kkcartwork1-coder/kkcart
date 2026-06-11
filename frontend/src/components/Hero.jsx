@@ -1,504 +1,432 @@
 // import { useNavigate } from "react-router-dom";
-
-// export default function Hero() {
-//   const navigate = useNavigate();
-
-//   return (
-//     <section className="bg-[#f7f7f7] overflow-hidden">
-//       <div className="max-w-7xl mx-auto px-4 py-8 md:py-12">
-
-//         {/* TITLE */}
-//         <div className="mb-10">
-//           <h1 className="text-5xl md:text-7xl font-black text-gray-900 leading-[1.05]">
-//             Order food &
-//             <br />
-//             groceries to your
-//             <br />
-//             doorstep
-//           </h1>
-
-//           <p className="text-gray-500 mt-5 text-xl">
-//             Fast delivery from our kitchen & grocery store.
-//           </p>
-//         </div>
-
-//         {/* MAIN CARDS */}
-//         <div className="grid md:grid-cols-2 gap-7">
-
-//           {/* GROCERY */}
-//           <div className="group relative min-h-[580px] rounded-[42px] overflow-hidden bg-gradient-to-br from-green-500 to-green-700 p-8 shadow-2xl hover:scale-[1.02] transition duration-500">
-
-//             <img
-//               src="https://images.unsplash.com/photo-1542838132-92c53300491e"
-//               alt="Grocery"
-//               className="absolute bottom-0 right-0 w-[78%] h-full object-cover group-hover:scale-105 transition duration-500 opacity-90"
-//             />
-
-//             <div className="absolute inset-0 bg-black/10"></div>
-
-//             <div className="relative z-10 flex flex-col justify-between h-full text-white">
-
-//               <div>
-
-//                 <div className="bg-white/20 backdrop-blur-md inline-flex px-4 py-2 rounded-full text-sm font-bold">
-//                   KKCart Grocery
-//                 </div>
-
-//                 <h2 className="text-5xl md:text-6xl font-black mt-6 leading-tight">
-//                   Groceries
-//                   <br />
-//                   in 10 mins
-//                 </h2>
-
-//                 <p className="mt-5 text-white/90 text-lg max-w-md">
-//                   Fruits, vegetables, dairy, bakery and daily essentials.
-//                 </p>
-
-//                 <div className="grid grid-cols-3 gap-3 mt-8 max-w-sm">
-
-//                   <Mini emoji="🥦" title="Vegetables" />
-//                   <Mini emoji="🍎" title="Fruits" />
-//                   <Mini emoji="🥛" title="Dairy" />
-
-//                 </div>
-//               </div>
-
-//               <button
-//                 onClick={() => navigate("/grocery")}
-//                 className="w-fit bg-white text-green-700 px-8 py-4 rounded-2xl font-black hover:scale-105 transition shadow-2xl"
-//               >
-//                 Shop Grocery
-//               </button>
-//             </div>
-//           </div>
-
-//           {/* FOOD */}
-//           <div className="group relative min-h-[580px] rounded-[42px] overflow-hidden bg-gradient-to-br from-orange-500 to-red-600 p-8 shadow-2xl hover:scale-[1.02] transition duration-500">
-
-//             <img
-//               src="https://images.unsplash.com/photo-1504674900247-0877df9cc836"
-//               alt="Food"
-//               className="absolute bottom-0 right-0 w-[78%] h-full object-cover group-hover:scale-105 transition duration-500 opacity-95"
-//             />
-
-//             <div className="absolute inset-0 bg-black/10"></div>
-
-//             <div className="relative z-10 flex flex-col justify-between h-full text-white">
-
-//               <div>
-
-//                 <div className="bg-white/20 backdrop-blur-md inline-flex px-4 py-2 rounded-full text-sm font-bold">
-//                   KKCart Cloud Kitchen
-//                 </div>
-
-//                 <h2 className="text-5xl md:text-6xl font-black mt-6 leading-tight">
-//                   Hot food
-//                   <br />
-//                   from our
-//                   <br />
-//                   kitchen
-//                 </h2>
-
-//                 <p className="mt-5 text-white/90 text-lg max-w-md">
-//                   Pizza, burgers, biryani, rolls and fresh meals delivered fast.
-//                 </p>
-
-//                 <div className="grid grid-cols-3 gap-3 mt-8 max-w-sm">
-
-//                   <Mini emoji="🍕" title="Pizza" />
-//                   <Mini emoji="🍔" title="Burger" />
-//                   <Mini emoji="🍛" title="Biryani" />
-
-//                 </div>
-//               </div>
-
-//               <button
-//                 onClick={() => navigate("/food")}
-//                 className="w-fit bg-white text-[#ff5200] px-8 py-4 rounded-2xl font-black hover:scale-105 transition shadow-2xl"
-//               >
-//                 Order Food
-//               </button>
-//             </div>
-//           </div>
-//         </div>
-
-//         {/* CATEGORY ROW */}
-//         <div className="grid grid-cols-2 md:grid-cols-6 gap-4 mt-10">
-
-//           <Category
-//             emoji="🥦"
-//             title="Vegetables"
-//             onClick={() => navigate("/grocery")}
-//           />
-
-//           <Category
-//             emoji="🍎"
-//             title="Fruits"
-//             onClick={() => navigate("/grocery")}
-//           />
-
-//           <Category
-//             emoji="🍕"
-//             title="Pizza"
-//             onClick={() => navigate("/food")}
-//           />
-
-//           <Category
-//             emoji="🍔"
-//             title="Burger"
-//             onClick={() => navigate("/food")}
-//           />
-
-//           <Category
-//             emoji="🍛"
-//             title="Biryani"
-//             onClick={() => navigate("/food")}
-//           />
-
-//           <Category
-//             emoji="🥤"
-//             title="Drinks"
-//             onClick={() => navigate("/food")}
-//           />
-
-//         </div>
-//       </div>
-//     </section>
-//   );
-// }
-
-// function Category({ emoji, title, onClick }) {
-//   return (
-//     <div
-//       onClick={onClick}
-//       className="bg-white rounded-3xl p-5 shadow hover:shadow-2xl hover:-translate-y-1 transition flex flex-col items-center justify-center cursor-pointer"
-//     >
-//       <div className="text-5xl">
-//         {emoji}
-//       </div>
-
-//       <h3 className="font-black mt-3 text-gray-800">
-//         {title}
-//       </h3>
-//     </div>
-//   );
-// }
-
-// function Mini({ emoji, title }) {
-//   return (
-//     <div className="bg-white/20 backdrop-blur-md rounded-2xl p-3 text-center">
-//       <div className="text-3xl">
-//         {emoji}
-//       </div>
-
-//       <p className="text-sm font-bold mt-2">
-//         {title}
-//       </p>
-//     </div>
-//   );
-// }
-
-// import { useNavigate } from "react-router-dom";
-// import { ArrowRight, Clock, Flame, ShoppingBag } from "lucide-react";
-
-// export default function Hero() {
-//   const navigate = useNavigate();
-
-//   return (
-//     <section className="bg-[#fff7ed] overflow-hidden">
-//       <div className="max-w-7xl mx-auto px-4 py-8 md:py-14">
-//         <div className="rounded-[44px] bg-white shadow-xl border overflow-hidden">
-//           <div className="grid lg:grid-cols-2">
-//             {/* LEFT */}
-//             <div className="p-7 md:p-12">
-//               <div className="inline-flex items-center gap-2 bg-orange-100 text-orange-600 px-4 py-2 rounded-full font-black text-sm">
-//                 <Flame size={16} />
-//                 KKCart Super Delivery
-//               </div>
-
-//               <h1 className="text-5xl md:text-7xl font-black text-gray-900 leading-[1.05] mt-6">
-//                 Food & grocery
-//                 <br />
-//                 delivered fast.
-//               </h1>
-
-//               <p className="text-gray-500 text-lg mt-5 max-w-xl">
-//                 Choose fresh grocery essentials or hot food from our own cloud kitchen.
-//               </p>
-
-//               <div className="grid sm:grid-cols-2 gap-4 mt-8">
-//                 <ActionCard
-//                   icon="🛒"
-//                   title="Grocery Delivery"
-//                   desc="Fruits, vegetables, dairy & essentials"
-//                   button="Shop Grocery"
-//                   color="green"
-//                   onClick={() => navigate("/grocery")}
-//                 />
-
-//                 <ActionCard
-//                   icon="🍔"
-//                   title="Cloud Kitchen"
-//                   desc="Biryani, pizza, burgers & meals"
-//                   button="Order Food"
-//                   color="orange"
-//                   onClick={() => navigate("/food")}
-//                 />
-//               </div>
-//             </div>
-
-//             {/* RIGHT */}
-//             <div className="relative min-h-[520px] bg-gradient-to-br from-orange-500 to-red-600 overflow-hidden">
-//               <img
-//                 src="https://images.unsplash.com/photo-1504674900247-0877df9cc836"
-//                 alt="Food and Grocery"
-//                 className="absolute inset-0 w-full h-full object-cover opacity-45"
-//               />
-
-//               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-
-//               <div className="absolute top-6 left-6 bg-white/90 backdrop-blur-xl rounded-3xl p-5 shadow-2xl">
-//                 <div className="flex items-center gap-3">
-//                   <Clock className="text-orange-500" />
-//                   <div>
-//                     <p className="text-xs text-gray-500 font-bold">
-//                       Delivery time
-//                     </p>
-//                     <h3 className="text-2xl font-black text-gray-900">
-//                       10–30 mins
-//                     </h3>
-//                   </div>
-//                 </div>
-//               </div>
-
-//               <div className="absolute bottom-6 left-6 right-6 bg-white/95 backdrop-blur-xl rounded-3xl p-5 shadow-2xl">
-//                 <div className="flex items-center justify-between gap-4">
-//                   <div>
-//                     <p className="text-sm text-gray-500 font-bold">
-//                       Today’s Special
-//                     </p>
-//                     <h3 className="text-2xl font-black text-gray-900">
-//                       Fresh food + daily needs
-//                     </h3>
-//                   </div>
-
-//                   <div className="text-5xl">⚡</div>
-//                 </div>
-//               </div>
-//             </div>
-//           </div>
-//         </div>
-
-//         {/* CATEGORY STRIP */}
-//         <div className="grid grid-cols-3 md:grid-cols-6 gap-4 mt-8">
-//           <Category emoji="🥦" title="Veggies" onClick={() => navigate("/grocery")} />
-//           <Category emoji="🍎" title="Fruits" onClick={() => navigate("/grocery")} />
-//           <Category emoji="🥛" title="Dairy" onClick={() => navigate("/grocery")} />
-//           <Category emoji="🍕" title="Pizza" onClick={() => navigate("/food")} />
-//           <Category emoji="🍔" title="Burger" onClick={() => navigate("/food")} />
-//           <Category emoji="🍛" title="Biryani" onClick={() => navigate("/food")} />
-//         </div>
-//       </div>
-//     </section>
-//   );
-// }
-
-// function ActionCard({ icon, title, desc, button, color, onClick }) {
-//   const isGreen = color === "green";
-
-//   return (
-//     <div
-//       onClick={onClick}
-//       className={`rounded-[28px] p-5 cursor-pointer transition hover:-translate-y-1 hover:shadow-xl ${
-//         isGreen ? "bg-green-50" : "bg-orange-50"
-//       }`}
-//     >
-//       <div className="text-5xl mb-4">{icon}</div>
-
-//       <h2 className="text-2xl font-black text-gray-900">{title}</h2>
-
-//       <p className="text-gray-500 text-sm mt-2 min-h-[42px]">{desc}</p>
-
-//       <button
-//         className={`mt-5 w-full py-3 rounded-2xl font-black text-white flex items-center justify-center gap-2 ${
-//           isGreen ? "bg-green-600" : "bg-orange-500"
-//         }`}
-//       >
-//         {button}
-//         <ArrowRight size={18} />
-//       </button>
-//     </div>
-//   );
-// }
-
-// function Category({ emoji, title, onClick }) {
-//   return (
-//     <button
-//       onClick={onClick}
-//       className="bg-white rounded-3xl p-5 shadow border hover:shadow-xl hover:-translate-y-1 transition"
-//     >
-//       <div className="text-4xl">{emoji}</div>
-//       <p className="font-black mt-2 text-gray-800">{title}</p>
-//     </button>
-//   );
-// }
-
-// import { useNavigate } from "react-router-dom";
 // import {
 //   ArrowRight,
+//   Clock3,
 //   Clock,
-//   Flame,
 //   ShieldCheck,
 //   Star,
 //   Truck,
 //   Wallet,
 // } from "lucide-react";
 
+// import { Swiper, SwiperSlide } from "swiper/react";
+// import { Autoplay, Pagination } from "swiper/modules";
+
+// import { useContext } from "react";
+// import { CartContext } from "../context/CartContext";
+
+// import "swiper/css";
+// import "swiper/css/pagination";
+
+// import { Home, User, ChevronDown } from "lucide-react";
+// import { useState } from "react";
+
+// import { useEffect } from "react";
+// import API from "../api"; // your API instance
+
+
+
 // export default function Hero() {
 //   const navigate = useNavigate();
 
+//   const [activeTab, setActiveTab] = useState("kitchen");
+//   const { cart, addToCart, decreaseQty } =
+//     useContext(CartContext);
+
+
+
+//   const [fastFoods, setFastFoods] = useState([]);
+//   useEffect(() => {
+//     fetchFastFoods();
+//   }, []);
+
+//   const fetchFastFoods = async () => {
+//     try {
+//       const res = await API.get("/products");
+
+//       const foods = res.data.filter(
+//         (item) =>
+//           item.type === "food" ||
+//           item.category === "Fast Food" ||
+//           item.section === "food"
+//       );
+
+//       setFastFoods(foods);
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   };
+
+//   const offers = [
+//     {
+//       id: 1,
+//       title: "FLAT ₹125 OFF",
+//       subtitle: "On food orders above ₹299",
+//       emoji: "🍔",
+//       bg: "from-orange-500 to-red-500",
+//     },
+//     {
+//       id: 2,
+//       title: "10 MIN DELIVERY",
+//       subtitle: "Fresh groceries from KKMart",
+//       emoji: "🛒",
+//       bg: "from-green-500 to-emerald-600",
+//     },
+//     {
+//       id: 3,
+//       title: "BUY 1 GET 1",
+//       subtitle: "Selected fast food items",
+//       emoji: "🍕",
+//       bg: "from-purple-500 to-indigo-600",
+//     },
+//   ];
+
+
 //   return (
-//     <section className="bg-[#fff7ed] overflow-hidden">
-//       <div className="max-w-7xl mx-auto px-4 py-8 md:py-14">
-//         {/* HERO */}
-//         <div className="rounded-[44px] bg-white shadow-2xl border overflow-hidden">
-//           <div className="grid lg:grid-cols-2">
-//             <div className="p-7 md:p-12">
-//               <div className="inline-flex items-center gap-2 bg-orange-100 text-orange-600 px-4 py-2 rounded-full font-black text-sm">
-//                 <Flame size={16} />
-//                 KKCart Super Delivery
-//               </div>
 
-//               <h1 className="text-5xl md:text-7xl font-black text-gray-900 leading-[1.05] mt-6">
-//                 Food & grocery
-//                 <br />
-//                 delivered fast.
-//               </h1>
+//     <section className="bg-[#fff8f1] overflow-hidden">
+//       <div className="max-w-7xl mx-auto px-5 py- md:py-14">
+//         <div className="flex gap-4 overflow-x-auto scrollbar-hide py-3 px-4">
 
-//               <p className="text-gray-500 text-lg mt-5 max-w-xl">
-//                 Fresh groceries, meat, sweets and hot food from our own cloud kitchen delivered to your doorstep.
-//               </p>
-
-//               <div className="grid sm:grid-cols-2 gap-4 mt-8">
-//                 <ActionCard
-//                   icon="🛒"
-//                   title="Grocery Delivery"
-//                   desc="Fruits, vegetables, dairy, meat & sweets"
-//                   button="Shop Grocery"
-//                   color="green"
-//                   onClick={() => navigate("/grocery")}
-//                 />
-
-//                 <ActionCard
-//                   icon="🍔"
-//                   title="Cloud Kitchen"
-//                   desc="Biryani, pizza, burgers, rolls & meals"
-//                   button="Order Food"
-//                   color="orange"
-//                   onClick={() => navigate("/food")}
-//                 />
-//               </div>
+//           {/* KKKitchen */}
+//           <button
+//             onClick={() => navigate("/food")}
+//             className="
+//       relative
+//       min-w-[160px]
+//       h-[120px]
+//       rounded-[32px]
+//       bg-gradient-to-br from-orange-500 via-orange-600 to-red-500
+//       text-white
+//       shadow-xl
+//       flex flex-col items-center justify-center
+//       overflow-hidden
+//       hover:scale-105
+//       transition-all duration-300
+//     "
+//           >
+//             <div className="absolute top-3 left-3 bg-white/20 backdrop-blur-md px-2 py-1 rounded-full text-[10px] font-bold">
+//               HOT FOOD
 //             </div>
 
-//             <div className="relative min-h-[520px] bg-gradient-to-br from-orange-500 to-red-600 overflow-hidden">
+//             <img
+//               src="https://cdn-icons-png.flaticon.com/512/5787/5787016.png"
+//               alt="KKKitchen"
+//               className="w-16 h-16 object-contain drop-shadow-lg"
+//             />
+
+//             <h3 className="mt-2 text-lg font-black">
+//               KKKitchen
+//             </h3>
+
+//             <p className="text-xs text-white/80">
+//               Fresh & Fast
+//             </p>
+
+//             <div className="absolute -right-5 -bottom-5 w-24 h-24 bg-white/10 rounded-full" />
+//           </button>
+
+//           {/* KKMart */}
+//           <button
+//             onClick={() => navigate("/grocery")}
+//             className="
+//       relative
+//       min-w-[160px]
+//       h-[120px]
+//       rounded-[32px]
+//       bg-gradient-to-br from-green-500 via-emerald-500 to-green-700
+//       text-white
+//       shadow-xl
+//       flex flex-col items-center justify-center
+//       overflow-hidden
+//       hover:scale-105
+//       transition-all duration-300
+//     "
+//           >
+//             <div className="absolute top-3 left-3 bg-white text-green-700 px-3 py-1 rounded-full text-[11px] font-black">
+//               10 MIN
+//             </div>
+
+//             <img
+//               src="https://cdn-icons-png.flaticon.com/512/3081/3081559.png"
+//               alt="KKMart"
+//               className="w-16 h-16 object-contain drop-shadow-lg"
+//             />
+
+//             <h3 className="mt-2 text-lg font-black">
+//               KKMart
+//             </h3>
+
+//             <p className="text-xs text-white/80">
+//               Grocery Delivery
+//             </p>
+
+//             <div className="absolute -right-5 -bottom-5 w-24 h-24 bg-white/10 rounded-full" />
+//           </button>
+
+//         </div>
+
+//         <Swiper
+//         modules={[Autoplay, Pagination]}
+//         spaceBetween={15}
+//         slidesPerView={1}
+//         loop={true}
+//         pagination={{ clickable: true }}
+//         autoplay={{
+//           delay: 5000,
+//           disableOnInteraction: false,
+//         }}
+//         className="rounded-[32px] overflow-hidden"
+//       >
+
+//         {/* SLIDE 1: FOOD SPECIAL */}
+//         <SwiperSlide>
+//           <div className="h-[220px] bg-gradient-to-r from-orange-500 to-red-500 p-6 sm:p-8 text-white flex items-center justify-between overflow-hidden relative group">
+//             {/* Left Side: Text Details */}
+//             <div className="space-y-2 z-10 max-w-[60%] sm:max-w-xl">
+//               <span className="bg-white/20 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+//                 Limited Offer
+//               </span>
+//               <h2 className="text-2xl sm:text-4xl font-black tracking-tight leading-tight mt-1">
+//                 FLAT ₹125 OFF
+//               </h2>
+//               <p className="text-white/90 text-xs sm:text-base font-medium">
+//                 On delicious hot food orders above ₹299
+//               </p>
+//             </div>
+
+//             {/* Right Side: Professional Food Image */}
+//             <div className="absolute right-0 bottom-0 h-full w-[45%] md:w-[40%] flex items-end justify-end pointer-events-none select-none">
 //               <img
-//                 src="https://images.unsplash.com/photo-1504674900247-0877df9cc836"
-//                 alt="Food and Grocery"
-//                 className="absolute inset-0 w-full h-full object-cover opacity-50"
+//                 src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=500&q=80"
+//                 alt="Delicious Pizza"
+//                 className="h-[110%] w-full object-cover rounded-tl-[100px] transition-transform duration-700 group-hover:scale-105"
 //               />
-
-//               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-
-//               <div className="absolute top-6 left-6 bg-white/90 backdrop-blur-xl rounded-3xl p-5 shadow-2xl">
-//                 <div className="flex items-center gap-3">
-//                   <Clock className="text-orange-500" />
-//                   <div>
-//                     <p className="text-xs text-gray-500 font-bold">
-//                       Delivery time
-//                     </p>
-//                     <h3 className="text-2xl font-black text-gray-900">
-//                       10–30 mins
-//                     </h3>
-//                   </div>
-//                 </div>
-//               </div>
-
-//               <div className="absolute bottom-6 left-6 right-6 bg-white/95 backdrop-blur-xl rounded-3xl p-5 shadow-2xl">
-//                 <p className="text-sm text-gray-500 font-bold">
-//                   Today’s Special
-//                 </p>
-//                 <h3 className="text-2xl font-black text-gray-900">
-//                   Fresh food + daily needs ⚡
-//                 </h3>
-//               </div>
+//               {/* Subtle overlay gradient to blend image into the slide color background */}
+//               <div className="absolute inset-0 bg-gradient-to-r from-orange-500/80 via-transparent to-transparent"></div>
 //             </div>
 //           </div>
-//         </div>
+//         </SwiperSlide>
 
-//         {/* CATEGORIES */}
+//         {/* SLIDE 2: INSTANT GROCERIES */}
+//         <SwiperSlide>
+//           <div className="h-[220px] bg-gradient-to-r from-green-500 to-emerald-600 p-6 sm:p-8 text-white flex items-center justify-between overflow-hidden relative group">
+//             {/* Left Side: Text Details */}
+//             <div className="space-y-2 z-10 max-w-[60%] sm:max-w-xl">
+//               <span className="bg-white/20 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+//                 Super Fast
+//               </span>
+//               <h2 className="text-2xl sm:text-4xl font-black tracking-tight leading-tight mt-1">
+//                 10 MIN DELIVERY
+//               </h2>
+//               <p className="text-white/90 text-xs sm:text-base font-medium">
+//                 Fresh groceries brought directly from KKMart dark stores
+//               </p>
+//             </div>
+
+//             {/* Right Side: Professional Groceries Image */}
+//             <div className="absolute right-0 bottom-0 h-full w-[45%] md:w-[40%] flex items-end justify-end pointer-events-none select-none">
+//               <img
+//                 src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=500&q=80"
+//                 alt="Fresh Groceries"
+//                 className="h-[110%] w-full object-cover rounded-tl-[100px] transition-transform duration-700 group-hover:scale-105"
+//               />
+//               <div className="absolute inset-0 bg-gradient-to-r from-green-500/80 via-transparent to-transparent"></div>
+//             </div>
+//           </div>
+//         </SwiperSlide>
+
+//         {/* SLIDE 3: BUY 1 GET 1 FAST FOOD */}
+//         <SwiperSlide>
+//           <div className="h-[220px] bg-gradient-to-r from-purple-500 to-indigo-600 p-6 sm:p-8 text-white flex items-center justify-between overflow-hidden relative group">
+//             {/* Left Side: Text Details */}
+//             <div className="space-y-2 z-10 max-w-[60%] sm:max-w-xl">
+//               <span className="bg-white/20 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+//                 Mega Deal
+//               </span>
+//               <h2 className="text-2xl sm:text-4xl font-black tracking-tight leading-tight mt-1">
+//                 BUY 1 GET 1
+//               </h2>
+//               <p className="text-white/90 text-xs sm:text-base font-medium">
+//                 Double the flavor on selected trending items
+//               </p>
+//             </div>
+
+//             {/* Right Side: Professional Fast Food Burger Image */}
+//             <div className="absolute right-0 bottom-0 h-full w-[45%] md:w-[40%] flex items-end justify-end pointer-events-none select-none">
+//               <img
+//                 src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=500&q=80"
+//                 alt="Premium Burger"
+//                 className="h-[110%] w-full object-cover rounded-tl-[100px] transition-transform duration-700 group-hover:scale-105"
+//               />
+//               <div className="absolute inset-0 bg-gradient-to-r from-purple-500/80 via-transparent to-transparent"></div>
+//             </div>
+//           </div>
+//         </SwiperSlide>
+
+//       </Swiper>
+
+//       <style>{`
+//         .swiper-pagination-bullet-active {
+//           background: #FC8019 !important;
+//           width: 20px !important;
+//           border-radius: 4px !important;
+//           transition: all 0.3s ease;
+//         }
+//       `}</style>
+
+
+
+
+//         <div className="mt-12 pb-4 select-none">
+
+//     {/* HEADER ACTIONS BLOCK */}
+//     <div className="flex justify-between items-baseline mb-5 px-1">
+//       <h2 className="text-xl sm:text-2xl font-black text-gray-900 tracking-tight">
+//         🍔 Fast Food Near You
+//       </h2>
+//       <button
+//         onClick={() => navigate("/food")}
+//         className="text-orange-500 font-extrabold text-sm sm:text-base hover:text-orange-600 transition active:scale-95"
+//       >
+//         See All
+//       </button>
+//     </div>
+
+//     {/* HORIZONTAL STREAM DISPLAY GRID */}
+//     <div className="flex gap-5 overflow-x-auto scrollbar-hide pb-4 px-1 snap-x">
+
+//       {fastFoods.length > 0 ? (
+//         fastFoods.map((item) => (
+//           <div
+//             key={item._id}
+//             onClick={() => navigate(`/product/${item._id}`)}
+//             className="min-w-[200px] max-w-[200px] bg-white rounded-[24px] border border-gray-100 shadow-sm overflow-hidden cursor-pointer hover:shadow-md transition-all duration-300 snap-start flex flex-col justify-between group"
+//           >
+//             {/* CARD THUMBNAIL WRAPPER */}
+//             <div className="relative overflow-hidden aspect-[4/3] w-full bg-gray-50 shrink-0">
+//               <img
+//                 src={item.image}
+//                 alt={item.name}
+//                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+//               />
+
+//               {/* STYLISH FLOATING ETA PILL CONTAINER */}
+//               <div className="absolute bottom-2.5 left-2.5 bg-black/70 backdrop-blur-md text-white text-[11px] font-black px-2.5 py-1.5 rounded-xl flex items-center gap-1 shadow-sm tracking-wide border border-white/10">
+//                 <Clock size={12} className="text-orange-400 stroke-[3]" />
+//                 <span>20-30 MINS</span>
+//               </div>
+//             </div>
+
+//             {/* PRODUCT SPECIFICATION CONTAINER */}
+//             <div className="p-3.5 flex flex-col flex-1 justify-between gap-3">
+//               <div className="space-y-0.5">
+//                 <h3 className="font-extrabold text-gray-800 text-sm sm:text-base line-clamp-1 group-hover:text-orange-500 transition-colors">
+//                   {item.name}
+//                 </h3>
+//                 <p className="text-gray-400 text-xs font-semibold line-clamp-1 tracking-wide">
+//                   {item.category}
+//                 </p>
+//               </div>
+
+//               {/* ACTION FOOTER BAR */}
+//               <div className="flex justify-between items-center mt-1">
+//                 <div>
+//                   <span className="font-black text-gray-900 text-base">
+//                     ₹{item.price}
+//                   </span>
+//                 </div>
+
+//                 {/* CONTAINERIZED QUANTITY MUTATION LOOP LAYER */}
+//                 {cart.find((i) => i._id === item._id) ? (
+//                   <div
+//                     onClick={(e) => e.stopPropagation()}
+//                     className="flex items-center bg-[#60B246] text-white rounded-xl overflow-hidden shadow-sm shadow-green-100 h-8 h-min"
+//                   >
+//                     <button
+//                       type="button"
+//                       onClick={() => decreaseQty(item._id)}
+//                       className="px-3 py-1 font-black text-sm hover:bg-green-700 transition active:scale-95"
+//                     >
+//                       -
+//                     </button>
+
+//                     <span className="px-1 font-black text-xs select-none min-w-[12px] text-center">
+//                       {cart.find((i) => i._id === item._id)?.qty}
+//                     </span>
+
+//                     <button
+//                       type="button"
+//                       onClick={() => addToCart(item)}
+//                       className="px-3 py-1 font-black text-sm hover:bg-green-700 transition active:scale-95"
+//                     >
+//                       +
+//                     </button>
+//                   </div>
+//                 ) : (
+//                   <button
+//                     type="button"
+//                     onClick={(e) => {
+//                       e.stopPropagation();
+//                       addToCart(item);
+//                     }}
+//                     className="bg-white border border-gray-200 hover:border-[#60B246] text-[#60B246] px-4 py-1.5 rounded-xl font-black text-xs uppercase tracking-wider transition active:scale-95 shadow-sm shadow-gray-50 hover:bg-green-50/30"
+//                   >
+//                     Add
+//                   </button>
+//                 )}
+//               </div>
+//             </div>
+
+//           </div>
+//         ))
+//       ) : (
+//         <>
+//           <FoodSkeleton />
+//           <FoodSkeleton />
+//           <FoodSkeleton />
+//         </>
+//       )}
+
+//     </div>
+//   </div>
+
+//         {/* CATEGORY PILLS */}
 //         <div className="grid grid-cols-3 md:grid-cols-8 gap-4 mt-8">
-//           <Category emoji="🥦" title="Veggies" onClick={() => navigate("/grocery")} />
+//           <Category emoji="🛒" title="Grocery" onClick={() => navigate("/grocery")} />
 //           <Category emoji="🍎" title="Fruits" onClick={() => navigate("/grocery")} />
-//           <Category emoji="🥛" title="Dairy" onClick={() => navigate("/grocery")} />
-//           <Category emoji="🍗" title="Meat" onClick={() => navigate("/grocery")} />
+//           <Category emoji="🥦" title="Vegitable" onClick={() => navigate("/grocery")} />
+//           <Category emoji="👶" title="Babycare" onClick={() => navigate("/grocery")} />
+//           <Category emoji="📏" title="Stationery" onClick={() => navigate("/grocery")} />
+
+
 //           <Category emoji="🍰" title="Sweets" onClick={() => navigate("/grocery")} />
-//           <Category emoji="🍕" title="Pizza" onClick={() => navigate("/food")} />
-//           <Category emoji="🍔" title="Burger" onClick={() => navigate("/food")} />
+//           <Category emoji="🍗" title="Meat" onClick={() => navigate("/grocery")} />
+
 //           <Category emoji="🍛" title="Biryani" onClick={() => navigate("/food")} />
-//         </div>
+//           <Category emoji="🌯" title="Rolls" onClick={() => navigate("/food")} />
 
-//         {/* OFFER BANNERS */}
-//         <div className="grid md:grid-cols-3 gap-5 mt-10">
-//           <Offer title="Flat ₹100 OFF" desc="On first order" emoji="🎁" />
-//           <Offer title="Free Delivery" desc="Above ₹199" emoji="🛵" />
-//           <Offer title="Fresh Daily" desc="Quality checked items" emoji="🥬" />
-//         </div>
 
-//         {/* GROCERY + FOOD */}
-//         <div className="grid md:grid-cols-2 gap-6 mt-10">
-//           <BigBanner
-//             title="Fresh Grocery Store"
-//             desc="Daily essentials, fruits, dairy, fish, chicken and sweets."
-//             button="Shop Grocery"
-//             emoji="🛒"
-//             color="green"
-//             onClick={() => navigate("/grocery")}
-//           />
-
-//           <BigBanner
-//             title="Own Cloud Kitchen"
-//             desc="Hot biryani, pizza, burger, rolls and meals made fresh."
-//             button="Order Food"
-//             emoji="🍔"
-//             color="orange"
-//             onClick={() => navigate("/food")}
-//           />
 //         </div>
 
 //         {/* WHY */}
 //         <div className="mt-12">
-//           <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-5">
-//             Why choose KKCart?
-//           </h2>
+//           <div className="flex items-end justify-between mb-5">
+//             <div>
+//               <p className="text-orange-500 font-black uppercase tracking-widest text-sm">
+//                 Why KKCart
+//               </p>
+//               <h2 className="text-3xl md:text-4xl font-black text-gray-900">
+//                 Built for fast local delivery
+//               </h2>
+//             </div>
+//           </div>
 
 //           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-//             <Why icon={<Truck />} title="Fast Delivery" desc="10–30 mins" />
-//             <Why icon={<ShieldCheck />} title="Fresh Items" desc="Quality checked" />
+//             <Why icon={<Truck />} title="Quick Delivery" desc="10–30 mins" />
+//             <Why icon={<ShieldCheck />} title="Fresh Quality" desc="Checked items" />
 //             <Why icon={<Wallet />} title="Best Price" desc="Local pricing" />
-//             <Why icon={<Star />} title="Trusted" desc="Happy customers" />
-//           </div>
-//         </div>
-
-//         {/* REVIEWS */}
-//         <div className="mt-12">
-//           <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-5">
-//             Customer love us
-//           </h2>
-
-//           <div className="grid md:grid-cols-3 gap-5">
-//             <Review text="Delivered in 15 minutes. Grocery quality was very good." />
-//             <Review text="Food was fresh and hot. Best local delivery service." />
-//             <Review text="Easy to order and prices are affordable." />
+//             <Why icon={<Star />} title="Trusted Store" desc="Loved locally" />
 //           </div>
 //         </div>
 //       </div>
@@ -506,28 +434,27 @@
 //   );
 // }
 
-// function ActionCard({ icon, title, desc, button, color, onClick }) {
-//   const isGreen = color === "green";
+// function SmallHero({ title, desc, emoji, color, onClick }) {
+//   const green = color === "green";
 
 //   return (
 //     <div
 //       onClick={onClick}
-//       className={`rounded-[28px] p-5 cursor-pointer transition hover:-translate-y-1 hover:shadow-xl ${
-//         isGreen ? "bg-green-50" : "bg-orange-50"
-//       }`}
-//     >
-//       <div className="text-5xl mb-4">{icon}</div>
-//       <h2 className="text-2xl font-black text-gray-900">{title}</h2>
-//       <p className="text-gray-500 text-sm mt-2 min-h-[42px]">{desc}</p>
-
-//       <button
-//         className={`mt-5 w-full py-3 rounded-2xl font-black text-white flex items-center justify-center gap-2 ${
-//           isGreen ? "bg-green-600" : "bg-orange-500"
+//       className={`min-h-[220px] rounded-[38px] p-7 text-white relative overflow-hidden cursor-pointer shadow-xl hover:-translate-y-1 transition ${green
+//         ? "bg-gradient-to-br from-green-500 to-green-700"
+//         : "bg-gradient-to-br from-orange-500 to-red-600"
 //         }`}
-//       >
-//         {button}
-//         <ArrowRight size={18} />
+//     >
+//       <h2 className="text-3xl font-black max-w-xs">{title}</h2>
+//       <p className="text-white/90 mt-3 max-w-xs">{desc}</p>
+
+//       <button className="mt-6 bg-white text-gray-900 px-5 py-3 rounded-2xl font-black">
+//         Explore
 //       </button>
+
+//       <div className="absolute right-4 bottom-0 text-[120px] opacity-20">
+//         {emoji}
+//       </div>
 //     </div>
 //   );
 // }
@@ -536,19 +463,19 @@
 //   return (
 //     <button
 //       onClick={onClick}
-//       className="bg-white rounded-3xl p-5 shadow border hover:shadow-xl hover:-translate-y-1 transition"
+//       className="bg-white rounded-[28px] p-5 shadow border hover:shadow-xl hover:-translate-y-1 transition"
 //     >
 //       <div className="text-4xl">{emoji}</div>
-//       <p className="font-black mt-2 text-gray-800 text-sm">{title}</p>
+//       <p className="font-black mt-2 text-sm text-gray-800">{title}</p>
 //     </button>
 //   );
 // }
 
-// function Offer({ title, desc, emoji }) {
+// function Offer({ emoji, title, desc }) {
 //   return (
 //     <div className="bg-white rounded-[30px] p-6 shadow border flex items-center justify-between">
 //       <div>
-//         <h3 className="text-xl font-black text-gray-900">{title}</h3>
+//         <h3 className="font-black text-xl">{title}</h3>
 //         <p className="text-gray-500 text-sm mt-1">{desc}</p>
 //       </div>
 //       <div className="text-5xl">{emoji}</div>
@@ -556,32 +483,29 @@
 //   );
 // }
 
-// function BigBanner({ title, desc, button, emoji, color, onClick }) {
-//   const isGreen = color === "green";
+// function FeatureBanner({ title, desc, button, emoji, color, onClick }) {
+//   const green = color === "green";
 
 //   return (
 //     <div
-//       className={`relative overflow-hidden rounded-[38px] p-8 text-white shadow-xl ${
-//         isGreen
-//           ? "bg-gradient-to-br from-green-500 to-green-700"
-//           : "bg-gradient-to-br from-orange-500 to-red-600"
-//       }`}
+//       className={`relative rounded-[40px] p-8 overflow-hidden text-white shadow-xl ${green
+//         ? "bg-gradient-to-br from-emerald-500 to-green-700"
+//         : "bg-gradient-to-br from-orange-500 to-red-600"
+//         }`}
 //     >
-//       <div className="relative z-10">
+//       <div className="relative z-10 max-w-md">
 //         <h2 className="text-4xl font-black">{title}</h2>
-//         <p className="mt-3 text-white/90 max-w-md">{desc}</p>
+//         <p className="text-white/90 mt-3">{desc}</p>
 
 //         <button
 //           onClick={onClick}
-//           className={`mt-6 px-6 py-3 rounded-2xl font-black ${
-//             isGreen ? "bg-white text-green-700" : "bg-white text-orange-600"
-//           }`}
+//           className="mt-6 bg-white text-gray-900 px-6 py-3 rounded-2xl font-black"
 //         >
 //           {button}
 //         </button>
 //       </div>
 
-//       <div className="absolute right-4 bottom-0 text-[130px] opacity-20">
+//       <div className="absolute right-5 bottom-0 text-[140px] opacity-20">
 //         {emoji}
 //       </div>
 //     </div>
@@ -590,154 +514,535 @@
 
 // function Why({ icon, title, desc }) {
 //   return (
-//     <div className="bg-white rounded-3xl p-5 shadow border">
-//       <div className="w-12 h-12 bg-orange-100 text-orange-600 rounded-2xl flex items-center justify-center">
+//     <div className="bg-white rounded-3xl p-5 border shadow">
+//       <div className="w-12 h-12 rounded-2xl bg-orange-100 text-orange-600 flex items-center justify-center">
 //         {icon}
 //       </div>
 //       <h3 className="font-black mt-4">{title}</h3>
-//       <p className="text-sm text-gray-500 mt-1">{desc}</p>
+//       <p className="text-gray-500 text-sm mt-1">{desc}</p>
 //     </div>
 //   );
 // }
 
-// function Review({ text }) {
+// function FoodSkeleton() {
 //   return (
-//     <div className="bg-white rounded-3xl p-6 shadow border">
-//       <p className="text-yellow-500 text-xl">★★★★★</p>
-//       <p className="text-gray-600 mt-3">"{text}"</p>
+//     <div className="min-w-[190px] bg-white rounded-3xl overflow-hidden shadow animate-pulse">
+//       <div className="h-[140px] bg-gray-200"></div>
+
+//       <div className="p-3">
+//         <div className="h-4 bg-gray-200 rounded mb-2"></div>
+//         <div className="h-3 bg-gray-200 rounded w-2/3"></div>
+//       </div>
 //     </div>
 //   );
 // }
+
+
 
 import { useNavigate } from "react-router-dom";
 import {
-  ArrowRight,
-  Clock3,
+  Clock,
   ShieldCheck,
+  Wallet,
   Star,
   Truck,
-  Wallet,
+  ChevronRight,
 } from "lucide-react";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination } from "swiper/modules";
+
+import { useContext, useState, useEffect } from "react";
+import { CartContext } from "../context/CartContext";
+
+import "swiper/css";
+import "swiper/css/pagination";
+
+import API from "../api";
 
 export default function Hero() {
   const navigate = useNavigate();
+  const { cart, addToCart, decreaseQty } = useContext(CartContext);
+  const [fastFoods, setFastFoods] = useState([]);
+
+  useEffect(() => {
+    fetchFastFoods();
+  }, []);
+
+  const fetchFastFoods = async () => {
+    try {
+      const res = await API.get("/products");
+      const foods = res.data.filter(
+        (item) =>
+          item.type === "food" ||
+          item.category === "Fast Food" ||
+          item.section === "food"
+      );
+      setFastFoods(foods);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
-    <section className="bg-[#fff8f1] overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 py-8 md:py-14">
-        {/* TOP HERO */}
-        <div className="grid lg:grid-cols-12 gap-6">
-          {/* LEFT MAIN */}
-          <div className="lg:col-span-7 bg-[#ff5200] rounded-[45px] p-8 md:p-12 text-white relative overflow-hidden shadow-2xl">
-            <div className="relative z-10 max-w-2xl">
-              <div className="inline-flex bg-white/20 backdrop-blur px-4 py-2 rounded-full text-sm font-black">
-                KKCart Grocery + Food
-              </div>
+    <section className="bg-[#fff8f1] overflow-hidden min-h-screen">
+      <div className="max-w-7xl mx-auto px-4 py-4 md:py-10 space-y-8">
 
-              <h1 className="text-5xl md:text-7xl font-black leading-[1.02] mt-6">
-                Everything
-                <br />
-                delivered
-                <br />
-                in minutes.
+        {/* ========================================================================= */}
+        {/* 1. DESKTOP ONLY: PREMIUM BANNER HERO AND LINK CARDS                       */}
+        {/* ========================================================================= */}
+        <div className="hidden md:block w-full space-y-6">
+          <div className="bg-[#FC8019] rounded-[32px] p-10 text-white relative overflow-hidden shadow-md flex flex-col justify-center min-h-[240px]">
+            <div className="max-w-xl space-y-3 z-10">
+              <h1 className="text-4xl font-black tracking-tight leading-tight">
+                Order Food & Groceries. <br />
+                <span className="text-yellow-300">Discover Best Restaurants Near You.</span>
               </h1>
-
-              <p className="text-white/90 text-lg mt-5 max-w-xl">
-                Fresh grocery, meat, sweets and hot meals from our own cloud
-                kitchen.
+              <p className="text-white/90 text-sm font-medium">
+                Instant delivery straight from your trusted local dark stores to your doorstep.
               </p>
+            </div>
+            <div className="absolute right-0 top-0 h-full w-[40%] bg-gradient-to-l from-black/10 to-transparent pointer-events-none" />
+            <div className="absolute -right-10 -bottom-10 w-64 h-64 bg-white/10 rounded-full blur-3xl pointer-events-none" />
+          </div>
 
-              <div className="flex flex-wrap gap-4 mt-8">
-                <button
-                  onClick={() => navigate("/grocery")}
-                  className="bg-white text-[#ff5200] px-7 py-4 rounded-2xl font-black flex items-center gap-2"
-                >
-                  Shop Grocery <ArrowRight size={18} />
-                </button>
-
-                <button
-                  onClick={() => navigate("/food")}
-                  className="bg-black text-white px-7 py-4 rounded-2xl font-black flex items-center gap-2"
-                >
-                  Order Food <ArrowRight size={18} />
-                </button>
+          <div className="grid grid-cols-3 gap-6">
+            {/* Card 1: Food Delivery */}
+            <div
+              onClick={() => navigate("/food")}
+              className="bg-white rounded-[32px] p-6 shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer flex flex-col justify-between h-[200px] group relative overflow-hidden"
+            >
+              <div className="space-y-1 max-w-[65%]">
+                <h3 className="text-xl font-black text-gray-900 tracking-tight">FOOD DELIVERY</h3>
+                <p className="text-gray-400 text-xs font-bold uppercase tracking-wider">From Our Cloud Kitchen</p>
+                {/* <div className="inline-block bg-orange-50 text-orange-600 font-black text-[10px] px-2.5 py-1 rounded-lg mt-2 border border-orange-100">
+                  UPTO 60% OFF
+                </div> */}
+              </div>
+              <div className="flex justify-between items-end mt-4">
+                <div className="w-9 h-9 rounded-full bg-orange-500 text-white flex items-center justify-center transition-transform group-hover:scale-110">
+                  <ChevronRight size={18} className="stroke-[3]" />
+                </div>
+                <img
+                  src="https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=150&q=80"
+                  alt="Food Service"
+                  className="w-28 h-28 object-cover rounded-2xl absolute -right-3 -bottom-3 rotate-[-12deg] group-hover:rotate-[-6deg] transition-all duration-500"
+                />
               </div>
             </div>
 
-            <div className="absolute right-5 bottom-0 text-[180px] md:text-[240px] opacity-20">
-              🛵
+            {/* Card 2: Instamart */}
+            <div
+              onClick={() => navigate("/grocery")}
+              className="bg-white rounded-[32px] p-6 shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer flex flex-col justify-between h-[200px] group relative overflow-hidden"
+            >
+              <div className="space-y-1 max-w-[65%]">
+                <h3 className="text-xl font-black text-gray-900 tracking-tight">KKMART</h3>
+                <p className="text-gray-400 text-xs font-bold uppercase tracking-wider">Instant Grocery</p>
+                {/* <div className="inline-block bg-emerald-50 text-emerald-600 font-black text-[10px] px-2.5 py-1 rounded-lg mt-2 border border-emerald-100">
+                  UPTO 60% OFF
+                </div> */}
+              </div>
+              <div className="flex justify-between items-end mt-4">
+                <div className="w-9 h-9 rounded-full bg-emerald-500 text-white flex items-center justify-center transition-transform group-hover:scale-110">
+                  <ChevronRight size={18} className="stroke-[3]" />
+                </div>
+                <img
+                  src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=150&q=80"
+                  alt="Grocery Service"
+                  className="w-28 h-28 object-cover rounded-2xl absolute -right-3 -bottom-3 rotate-[-12deg] group-hover:rotate-[-6deg] transition-all duration-500"
+                />
+              </div>
+            </div>
+
+            {/* Card 3: FIXED - Changed from Dineout to Sweets & Bakery */}
+            <div
+              onClick={() => navigate("/grocery")}
+              className="bg-white rounded-[32px] p-6 shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer flex flex-col justify-between h-[200px] group relative overflow-hidden"
+            >
+              <div className="space-y-1 max-w-[65%]">
+                <h3 className="text-xl font-black text-gray-900 tracking-tight">SWEETS & CAKES</h3>
+                <p className="text-gray-400 text-xs font-bold uppercase tracking-wider">Local Bakeries</p>
+                {/* <div className="inline-block bg-pink-50 text-pink-600 font-black text-[10px] px-2.5 py-1 rounded-lg mt-2 border border-pink-100">
+                  FLAT 20% OFF
+                </div> */}
+              </div>
+              <div className="flex justify-between items-end mt-4">
+                <div className="w-9 h-9 rounded-full bg-pink-500 text-white flex items-center justify-center transition-transform group-hover:scale-110">
+                  <ChevronRight size={18} className="stroke-[3]" />
+                </div>
+                <img
+                  src="https://images.unsplash.com/photo-1587314168485-3236d6710814?auto=format&fit=crop&w=150&q=80"
+                  alt="Sweets Service"
+                  className="w-28 h-28 object-cover rounded-2xl absolute -right-3 -bottom-3 rotate-[-12deg] group-hover:rotate-[-6deg] transition-all duration-500"
+                />
+              </div>
             </div>
           </div>
-
-          {/* RIGHT STACK */}
-          <div className="lg:col-span-5 grid gap-6">
-            <SmallHero
-              title="Groceries in 10 mins"
-              desc="Fruits, dairy, bakery, chicken & fish"
-              emoji="🛒"
-              color="green"
-              onClick={() => navigate("/grocery")}
-            />
-
-            <SmallHero
-              title="Hot food from kitchen"
-              desc="Biryani, pizza, burger and meals"
-              emoji="🍔"
-              color="orange"
-              onClick={() => navigate("/food")}
-            />
-          </div>
         </div>
 
-        {/* CATEGORY PILLS */}
-        <div className="grid grid-cols-3 md:grid-cols-8 gap-4 mt-8">
-        <Category emoji="🛒" title="Grocery" onClick={() => navigate("/grocery")} />
-          <Category emoji="🍎" title="Fruits" onClick={() => navigate("/grocery")} />
-          <Category emoji="🥦" title="Veggies" onClick={() => navigate("/grocery")} />
-          <Category emoji="🥛" title="Dairy" onClick={() => navigate("/grocery")} />
-          
-          <Category emoji="🍰" title="Sweets" onClick={() => navigate("/grocery")} />
-          <Category emoji="🍗" title="Meat" onClick={() => navigate("/grocery")} />
-        
-          <Category emoji="🍛" title="Biryani" onClick={() => navigate("/food")} />
-        </div>
-
-        {/* OFFERS */}
-        <div className="grid md:grid-cols-3 gap-5 mt-10">
-          <Offer emoji="🎁" title="Flat ₹50 OFF" desc="On your first order" />
-          <Offer emoji="⚡" title="Fast Delivery" desc="10–30 min doorstep delivery" />
-          <Offer emoji="🥬" title="Fresh Daily" desc="Quality checked products" />
-        </div>
-
-        {/* FEATURED SECTIONS */}
-        {/* <div className="grid md:grid-cols-2 gap-6 mt-10">
-          <FeatureBanner
-            title="Daily grocery essentials"
-            desc="Fresh vegetables, fruits, dairy, bakery, sweets, meat and fish."
-            button="Explore Grocery"
-            emoji="🥦"
-            color="green"
-            onClick={() => navigate("/grocery")}
-          />
-
-          <FeatureBanner
-            title="Cloud kitchen specials"
-            desc="Freshly cooked biryani, burgers, pizza, rolls and meals."
-            button="Explore Food"
-            emoji="🍛"
-            color="orange"
+        {/* ========================================================================= */}
+        {/* 2. MOBILE ONLY: QUICK CHIP CARDS                                         */}
+        {/* ========================================================================= */}
+        {/* <div className="flex md:hidden gap-4 overflow-x-auto scrollbar-hide py-2">
+          <button
             onClick={() => navigate("/food")}
-          />
+            className="relative min-w-[155px] h-[115px] rounded-[28px] bg-gradient-to-br from-orange-500 via-orange-600 to-red-500 text-white shadow-md flex flex-col items-center justify-center overflow-hidden active:scale-95 transition-transform shrink-0"
+          >
+            <div className="absolute top-2 left-2 bg-white/20 backdrop-blur-md px-2 py-0.5 rounded-full text-[9px] font-black tracking-wider">
+              HOT FOOD
+            </div>
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/5787/5787016.png"
+              alt="KKKitchen"
+              className="w-12 h-12 object-contain drop-shadow"
+            />
+            <h3 className="mt-1 text-sm font-black">KKKitchen</h3>
+            <p className="text-[10px] text-white/80">Fresh & Fast</p>
+            <div className="absolute -right-5 -bottom-5 w-16 h-16 bg-white/10 rounded-full" />
+          </button>
+
+          <button
+            onClick={() => navigate("/grocery")}
+            className="relative min-w-[155px] h-[115px] rounded-[28px] bg-gradient-to-br from-green-500 via-emerald-500 to-green-700 text-white shadow-md flex flex-col items-center justify-center overflow-hidden active:scale-95 transition-transform shrink-0"
+          >
+            <div className="absolute top-2 left-2 bg-white text-green-700 px-2 py-0.5 rounded-full text-[9px] font-black tracking-wider">
+              10 MIN
+            </div>
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/3081/3081559.png"
+              alt="KKMart"
+              className="w-12 h-12 object-contain drop-shadow"
+            />
+            <h3 className="mt-1 text-sm font-black">KKMart</h3>
+            <p className="text-[10px] text-white/80">Grocery Delivery</p>
+            <div className="absolute -right-5 -bottom-5 w-16 h-16 bg-white/10 rounded-full" />
+          </button>
         </div> */}
 
-        {/* WHY */}
-        <div className="mt-12">
+        <div className="flex md:hidden gap-4 overflow-x-auto px-5 scrollbar-none no-scrollbar snap-x scroll-smooth">
+
+          {/* 🍳 1. THE KK-KITCHEN SLICK SPLIT-PANEL */}
+          <button
+            type="button"
+            onClick={() => navigate("/food")}
+            className="relative min-w-[160px] h-[105px] rounded-[24px] bg-[#0E0B08] text-white border border-[#2D1B10] shadow-xl overflow-hidden active:scale-[0.97] transition-all duration-300 shrink-0 snap-start flex group text-left"
+          >
+            {/* Micro Neon Accent Strip */}
+            <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-[#FC8019] to-transparent" />
+
+            {/* Left Info Column */}
+            <div className="w-[58%] p-3.5 flex flex-col justify-between z-20 h-full">
+              <span className="text-[8px] font-black uppercase tracking-widest text-[#FC8019]/80">
+                Cloud Kitchen
+              </span>
+              <div>
+                <h3 className="text-sm font-black tracking-tight text-white leading-tight">
+                  KKKitchen
+                </h3>
+                <p className="text-[10px] text-gray-400 font-medium mt-0.5 tracking-tight">
+                  Fresh Meals
+                </p>
+              </div>
+            </div>
+
+            {/* Right Image Frame with Angled Geometric Split Cut */}
+            <div className="w-[42%] h-full absolute right-0 top-0 bottom-0 overflow-hidden select-none pointer-events-none">
+              <img
+                src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=300&q=80"
+                alt="KKKitchen Premium Food"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              {/* High-end smooth internal alpha-fade shroud */}
+              <div className="absolute inset-0 bg-gradient-to-r from-[#0E0B08] via-[#0E0B08]/40 to-transparent" />
+            </div>
+          </button>
+
+          {/* 🍏 2. THE KK-MART SLICK SPLIT-PANEL */}
+          <button
+            type="button"
+            onClick={() => navigate("/grocery")}
+            className="relative min-w-[160px] h-[105px] rounded-[24px] bg-[#070A08] text-white border border-[#122317] shadow-xl overflow-hidden active:scale-[0.97] transition-all duration-300 shrink-0 snap-start flex group text-left"
+          >
+            {/* Micro Neon Accent Strip */}
+            <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-[#10B981] to-transparent" />
+
+            {/* Left Info Column */}
+            <div className="w-[58%] p-3.5 flex flex-col justify-between z-20 h-full">
+              <span className="text-[8px] font-black uppercase tracking-widest text-[#10B981]/80">
+                Flash Drop
+              </span>
+              <div>
+                <h3 className="text-sm font-black tracking-tight text-white leading-tight">
+                  KKMart
+                </h3>
+                <p className="text-[10px] text-gray-400 font-medium mt-0.5 tracking-tight">
+                  10 Min Groceries
+                </p>
+              </div>
+            </div>
+
+            {/* Right Image Frame with Angled Geometric Split Cut */}
+            <div className="w-[42%] h-full absolute right-0 top-0 bottom-0 overflow-hidden select-none pointer-events-none">
+              <img
+                src="https://images.unsplash.com/photo-1610348725531-843dff563e2c?auto=format&fit=crop&w=300&q=80"
+                alt="KKMart Fresh Groceries"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              {/* High-end smooth internal alpha-fade shroud */}
+              <div className="absolute inset-0 bg-gradient-to-r from-[#070A08] via-[#070A08]/40 to-transparent" />
+            </div>
+          </button>
+
+        </div>
+
+
+        {/* ========================================================================= */}
+        {/* 3. CORE PROMOTIONAL BANNER SWIPER SYSTEM                                  */}
+        {/* ========================================================================= */}
+        <Swiper
+          modules={[Autoplay, Pagination]}
+          spaceBetween={15}
+          slidesPerView={1}
+          loop={true}
+          pagination={{ clickable: true }}
+          autoplay={{
+            delay: 5000,
+            disableOnInteraction: false,
+          }}
+          className="rounded-[32px] overflow-hidden shadow-sm border border-gray-100"
+        >
+          <SwiperSlide>
+            <div className="h-[220px] bg-gradient-to-br from-[#1C0A02] to-[#0A0401] p-6 sm:p-8 text-white flex items-center justify-between overflow-hidden relative group border border-orange-500/10 rounded-[32px]">
+              {/* Ambient premium orange glow circle */}
+              <div className="absolute top-0 left-0 w-48 h-48 bg-orange-500/10 rounded-full blur-[60px] pointer-events-none" />
+
+              {/* LEFT SIDE DETAILS */}
+              <div className="space-y-2 z-10 max-w-[60%] sm:max-w-xl text-left">
+                <span className="bg-orange-500/10 text-orange-400 border border-orange-500/20 px-3 py-1 rounded-full text-[10px] sm:text-xs font-black uppercase tracking-wider">
+                  Welcome Reward
+                </span>
+                <h2 className="text-2xl sm:text-4xl font-black tracking-tight leading-tight mt-1 text-white">
+                  FLAT ₹50 OFF<br />
+                  <span className="bg-gradient-to-r from-orange-400 to-amber-300 bg-clip-text text-transparent">
+                    FIRST ORDER
+                  </span>
+                </h2>
+                <p className="text-gray-400 text-xs sm:text-sm font-medium leading-relaxed max-w-sm line-clamp-2 sm:line-clamp-none">
+                  Claim your special welcome savings on food or grocery bundles above ₹299.
+                </p>
+              </div>
+
+              {/* RIGHT SIDE PIC BACKGROUND */}
+              <div className="absolute right-0 bottom-0 top-0 h-full w-[42%] sm:w-[45%] flex items-center justify-end pointer-events-none select-none overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80"
+                  alt="Premium Wood-Fired Gourmet Pizza"
+                  className="h-full w-full object-cover rounded-tl-[60px] sm:rounded-tl-[100px] scale-[1.01] transition-transform duration-700 group-hover:scale-105"
+                />
+                {/* Cinematic dark linear gradient blend to seamlessly merge the gourmet pizza with the luxury card background */}
+                <div className="absolute inset-0 bg-gradient-to-r from-[#0A0401] via-[#0A0401]/30 to-transparent z-10"></div>
+              </div>
+            </div>
+          </SwiperSlide>
+
+          <SwiperSlide>
+            <div className="h-[220px] bg-gradient-to-br from-[#091E14] to-[#030A07] p-6 sm:p-8 text-white flex items-center justify-between overflow-hidden relative group border border-emerald-500/10 rounded-[32px]">
+              {/* Ambient green decoration light circle */}
+              <div className="absolute top-0 left-0 w-48 h-48 bg-emerald-500/10 rounded-full blur-[60px] pointer-events-none" />
+
+              {/* LEFT SIDE DETAILS */}
+              <div className="space-y-2 z-10 max-w-[60%] sm:max-w-xl text-left">
+                <span className="bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-3 py-1 rounded-full text-[10px] sm:text-xs font-black uppercase tracking-wider">
+                  Farm Fresh Picked
+                </span>
+                <h2 className="text-2xl sm:text-4xl font-black tracking-tight leading-tight mt-1 text-white">
+                  FRESH ITEMS <br />
+                  <span className="bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">
+                    DAILY HANDOVER
+                  </span>
+                </h2>
+                <p className="text-gray-400 text-xs sm:text-sm font-medium leading-relaxed max-w-sm line-clamp-2 sm:line-clamp-none">
+                  Crisp vegetables, organic fruits, and premium kitchen essentials straight from your nearest KKMart dark store.
+                </p>
+              </div>
+
+              {/* RIGHT SIDE PIC BACKGROUND */}
+              <div className="absolute right-0 bottom-0 top-0 h-full w-[42%] sm:w-[45%] flex items-center justify-end pointer-events-none select-none overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1610348725531-843dff563e2c?auto=format&fit=crop&w=600&q=80"
+                  alt="Premium Fresh Produce and Green Groceries Selection"
+                  className="h-full w-full object-cover rounded-tl-[60px] sm:rounded-tl-[100px] scale-[1.01] transition-transform duration-700 group-hover:scale-105"
+                />
+                {/* High-end linear fade mask to seamlessly blend the fresh produce artwork into your new dark store scheme */}
+                <div className="absolute inset-0 bg-gradient-to-r from-[#030A07] via-[#030A07]/40 to-transparent z-10"></div>
+              </div>
+            </div>
+          </SwiperSlide>
+
+          <SwiperSlide>
+            <div className="h-[220px] bg-gradient-to-br from-[#140B05] to-[#0A0604] p-6 sm:p-8 text-white flex items-center justify-between overflow-hidden relative group border border-orange-500/10 rounded-[32px]">
+              {/* Ambient background accent glow */}
+              <div className="absolute top-0 left-0 w-48 h-48 bg-orange-500/10 rounded-full blur-[60px] pointer-events-none" />
+
+              {/* LEFT SIDE DETAILS */}
+              <div className="space-y-2 z-10 max-w-[60%] sm:max-w-xl text-left">
+                <span className="bg-orange-500/10 text-orange-400 border border-orange-500/20 px-3 py-1 rounded-full text-[10px] sm:text-xs font-black uppercase tracking-wider">
+                  KKCart Originals
+                </span>
+                <h2 className="text-2xl sm:text-4xl font-black tracking-tight leading-tight mt-1 text-white">
+                  CRAFTED IN OUR <br />
+                  <span className="bg-gradient-to-r from-orange-500 to-amber-400 bg-clip-text text-transparent">
+                    CLOUD KITCHEN
+                  </span>
+                </h2>
+                <p className="text-gray-400 text-xs sm:text-sm font-medium leading-relaxed max-w-sm line-clamp-2 sm:line-clamp-none">
+                  Hygiene certified, freshly prepared premium meals delivered flash fast.
+                </p>
+              </div>
+
+              {/* RIGHT SIDE PIC BACKGROUND */}
+              <div className="absolute right-0 bottom-0 top-0 h-full w-[42%] sm:w-[45%] flex items-center justify-end pointer-events-none select-none overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=600&q=80"
+                  alt="Premium Culinary Cloud Kitchen Crafting"
+                  className="h-full w-full object-cover rounded-tl-[60px] sm:rounded-tl-[100px] scale-[1.01] transition-transform duration-700 group-hover:scale-105"
+                />
+                {/* Dynamic Linear Mask Overlay to smoothly fade food image into the dark card background */}
+                <div className="absolute inset-0 bg-gradient-to-r from-[#0A0604] via-[#0A0604]/40 to-transparent z-10"></div>
+              </div>
+            </div>
+          </SwiperSlide>
+        </Swiper>
+
+        {/* ========================================================================= */}
+        {/* 4. FAST FOOD STREAM SCROLL TRACK                                          */}
+        {/* ========================================================================= */}
+        <div className="pb-2 select-none">
+          <div className="flex justify-between items-baseline mb-5 px-1">
+            <h2 className="text-xl sm:text-2xl font-black text-gray-900 tracking-tight">
+              🍔 Fast Food Near You
+            </h2>
+            <button
+              onClick={() => navigate("/food")}
+              className="text-orange-500 font-extrabold text-sm sm:text-base hover:text-orange-600 transition"
+            >
+              See All
+            </button>
+          </div>
+
+          <div className="flex gap-5 overflow-x-auto scrollbar-hide pb-4 px-1 snap-x">
+            {fastFoods.length > 0 ? (
+              fastFoods.map((item) => (
+                <div
+                  key={item._id}
+                  onClick={() => navigate(`/product/${item._id}`)}
+                  className="min-w-[200px] max-w-[200px] bg-white rounded-[24px] border border-gray-100 shadow-sm overflow-hidden cursor-pointer hover:shadow-md transition-all duration-300 snap-start flex flex-col justify-between group"
+                >
+                  <div className="relative overflow-hidden aspect-[4/3] w-full bg-gray-50 shrink-0">
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute bottom-2.5 left-2.5 bg-black/70 backdrop-blur-md text-white text-[11px] font-black px-2.5 py-1.5 rounded-xl flex items-center gap-1 shadow-sm tracking-wide border border-white/10">
+                      <Clock size={12} className="text-orange-400 stroke-[3]" />
+                      <span>20-30 MINS</span>
+                    </div>
+                  </div>
+
+                  <div className="p-3.5 flex flex-col flex-1 justify-between gap-3">
+                    <div className="space-y-0.5">
+                      <h3 className="font-extrabold text-gray-800 text-sm sm:text-base line-clamp-1 group-hover:text-orange-500 transition-colors">
+                        {item.name}
+                      </h3>
+                      <p className="text-gray-400 text-xs font-semibold line-clamp-1 tracking-wide">
+                        {item.category}
+                      </p>
+                    </div>
+
+                    <div className="flex justify-between items-center mt-1">
+                      <div>
+                        <span className="font-black text-gray-900 text-base">
+                          ₹{item.price}
+                        </span>
+                      </div>
+
+                      {cart.find((i) => i._id === item._id) ? (
+                        <div
+                          onClick={(e) => e.stopPropagation()}
+                          className="flex items-center bg-[#60B246] text-white rounded-xl overflow-hidden shadow-sm h-8"
+                        >
+                          <button
+                            type="button"
+                            onClick={() => decreaseQty(item._id)}
+                            className="px-3 py-1 font-black text-sm hover:bg-green-700 transition"
+                          >
+                            -
+                          </button>
+                          <span className="px-1 font-black text-xs min-w-[12px] text-center">
+                            {cart.find((i) => i._id === item._id)?.qty}
+                          </span>
+                          <button
+                            type="button"
+                            onClick={() => addToCart(item)}
+                            className="px-3 py-1 font-black text-sm hover:bg-green-700 transition"
+                          >
+                            +
+                          </button>
+                        </div>
+                      ) : (
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            addToCart(item);
+                          }}
+                          className="bg-white border border-gray-200 hover:border-[#60B246] text-[#60B246] px-4 py-1.5 rounded-xl font-black text-xs uppercase tracking-wider transition hover:bg-green-50/30"
+                        >
+                          Add
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              ))
+            ) : (
+              <>
+                <FoodSkeleton />
+                <FoodSkeleton />
+                <FoodSkeleton />
+              </>
+            )}
+          </div>
+        </div>
+
+        {/* ========================================================================= */}
+        {/* 5. CATEGORIES GRID                                                        */}
+        {/* ========================================================================= */}
+        <div className="grid grid-cols-3 md:grid-cols-7 gap-4 mt-4">
+          <Category emoji="🛒" title="Grocery" onClick={() => navigate("/grocery")} />
+          <Category emoji="🍎" title="Fruits" onClick={() => navigate("/grocery")} />
+          <Category emoji="🥦" title="Vegetables" onClick={() => navigate("/grocery")} />
+          <Category emoji="👜" title="Stationery" onClick={() => navigate("/grocery")} />
+          <Category emoji="🍼" title="Baby Care" onClick={() => navigate("/grocery")} />
+
+          <Category emoji="🍰" title="Sweets" onClick={() => navigate("/grocery")} />
+          <Category emoji="🍗" title="Meat" onClick={() => navigate("/grocery")} />
+          <Category emoji="🍛" title="Biryani" onClick={() => navigate("/food")} />
+          <Category emoji="🌯" title="Rolls" onClick={() => navigate("/food")} />
+        </div>
+
+        {/* ========================================================================= */}
+        {/* 6. INFRASTRUCTURE TRUST PERKS                                             */}
+        {/* ========================================================================= */}
+        <div className="mt-8">
           <div className="flex items-end justify-between mb-5">
             <div>
-              <p className="text-orange-500 font-black uppercase tracking-widest text-sm">
+              <p className="text-orange-500 font-black uppercase tracking-widest text-xs">
                 Why KKCart
               </p>
-              <h2 className="text-3xl md:text-4xl font-black text-gray-900">
+              <h2 className="text-2xl md:text-3xl font-black text-gray-900 mt-0.5">
                 Built for fast local delivery
               </h2>
             </div>
@@ -750,34 +1055,18 @@ export default function Hero() {
             <Why icon={<Star />} title="Trusted Store" desc="Loved locally" />
           </div>
         </div>
+
       </div>
+
+      <style>{`
+        .swiper-pagination-bullet-active {
+          background: #FC8019 !important;
+          width: 20px !important;
+          border-radius: 4px !important;
+          transition: all 0.3s ease;
+        }
+      `}</style>
     </section>
-  );
-}
-
-function SmallHero({ title, desc, emoji, color, onClick }) {
-  const green = color === "green";
-
-  return (
-    <div
-      onClick={onClick}
-      className={`min-h-[220px] rounded-[38px] p-7 text-white relative overflow-hidden cursor-pointer shadow-xl hover:-translate-y-1 transition ${
-        green
-          ? "bg-gradient-to-br from-green-500 to-green-700"
-          : "bg-gradient-to-br from-orange-500 to-red-600"
-      }`}
-    >
-      <h2 className="text-3xl font-black max-w-xs">{title}</h2>
-      <p className="text-white/90 mt-3 max-w-xs">{desc}</p>
-
-      <button className="mt-6 bg-white text-gray-900 px-5 py-3 rounded-2xl font-black">
-        Explore
-      </button>
-
-      <div className="absolute right-4 bottom-0 text-[120px] opacity-20">
-        {emoji}
-      </div>
-    </div>
   );
 }
 
@@ -785,67 +1074,34 @@ function Category({ emoji, title, onClick }) {
   return (
     <button
       onClick={onClick}
-      className="bg-white rounded-[28px] p-5 shadow border hover:shadow-xl hover:-translate-y-1 transition"
+      className="bg-white rounded-[24px] p-4 shadow-sm border border-gray-100 hover:shadow-md hover:-translate-y-0.5 transition flex flex-col items-center text-center"
     >
-      <div className="text-4xl">{emoji}</div>
-      <p className="font-black mt-2 text-sm text-gray-800">{title}</p>
+      <div className="text-3xl sm:text-4xl">{emoji}</div>
+      <p className="font-black mt-2 text-xs sm:text-sm text-gray-800">{title}</p>
     </button>
-  );
-}
-
-function Offer({ emoji, title, desc }) {
-  return (
-    <div className="bg-white rounded-[30px] p-6 shadow border flex items-center justify-between">
-      <div>
-        <h3 className="font-black text-xl">{title}</h3>
-        <p className="text-gray-500 text-sm mt-1">{desc}</p>
-      </div>
-      <div className="text-5xl">{emoji}</div>
-    </div>
-  );
-}
-
-function FeatureBanner({ title, desc, button, emoji, color, onClick }) {
-  const green = color === "green";
-
-  return (
-    <div
-      className={`relative rounded-[40px] p-8 overflow-hidden text-white shadow-xl ${
-        green
-          ? "bg-gradient-to-br from-emerald-500 to-green-700"
-          : "bg-gradient-to-br from-orange-500 to-red-600"
-      }`}
-    >
-      <div className="relative z-10 max-w-md">
-        <h2 className="text-4xl font-black">{title}</h2>
-        <p className="text-white/90 mt-3">{desc}</p>
-
-        <button
-          onClick={onClick}
-          className="mt-6 bg-white text-gray-900 px-6 py-3 rounded-2xl font-black"
-        >
-          {button}
-        </button>
-      </div>
-
-      <div className="absolute right-5 bottom-0 text-[140px] opacity-20">
-        {emoji}
-      </div>
-    </div>
   );
 }
 
 function Why({ icon, title, desc }) {
   return (
-    <div className="bg-white rounded-3xl p-5 border shadow">
-      <div className="w-12 h-12 rounded-2xl bg-orange-100 text-orange-600 flex items-center justify-center">
+    <div className="bg-white rounded-3xl p-5 border border-gray-100 shadow-sm">
+      <div className="w-11 h-11 rounded-2xl bg-orange-100 text-orange-600 flex items-center justify-center">
         {icon}
       </div>
-      <h3 className="font-black mt-4">{title}</h3>
-      <p className="text-gray-500 text-sm mt-1">{desc}</p>
+      <h3 className="font-black text-sm sm:text-base mt-4 text-gray-900">{title}</h3>
+      <p className="text-gray-400 text-xs font-semibold mt-1">{desc}</p>
     </div>
   );
 }
 
-
-
+function FoodSkeleton() {
+  return (
+    <div className="min-w-[200px] bg-white rounded-[24px] border border-gray-100 overflow-hidden shadow-sm animate-pulse">
+      <div className="aspect-[4/3] bg-gray-200"></div>
+      <div className="p-4 space-y-2">
+        <div className="h-4 bg-gray-200 rounded w-3/4"></div>
+        <div className="h-3 bg-gray-200 rounded w-1/2"></div>
+      </div>
+    </div>
+  );
+}

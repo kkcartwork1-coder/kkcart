@@ -17,7 +17,7 @@ const productSchema = new mongoose.Schema(
   {
     name: String,
 
-    price: Number,
+    price: String,
 
     image: String,
 
@@ -25,9 +25,9 @@ const productSchema = new mongoose.Schema(
 
     type: String,
 
-    stock: Number,
+    // stock: Number,
 
-    description: String,
+    // description: String,
   },
   { timestamps: true }
 );

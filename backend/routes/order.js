@@ -1,9 +1,5 @@
 const multer = require("multer");
-// const {
-//   CloudinaryStorage,
-// } = require(
-//   "multer-storage-cloudinary"
-// );
+
 const { CloudinaryStorage } = require(
   "multer-storage-cloudinary-v2"
 );
@@ -26,47 +22,49 @@ const storage =
 const upload =
   multer({ storage });
 
-// Place order
+
 // router.post(
 //   "/",
-//   upload.single(
-//     "paymentScreenshot"
-//   ),
+//   upload.single("paymentScreenshot"),
 //   async (req, res) => {
-//   try {
-//     const order = new Order(req.body);
-//     await order.save();
-//     res.json(order);
-//   } catch (err) {
-//     res.status(500).json({ msg: "Order failed", error: err.message });
+//     try {
+//       const order = new Order({
+//         ...req.body,
+
+//         items: JSON.parse(req.body.items),
+
+//         paymentScreenshot:
+//           req.file?.path || "",
+//       });
+
+//       await order.save();
+
+//       res.json(order);
+//     } catch (err) {
+//       res.status(500).json({
+//         msg: "Order failed",
+//         error: err.message,
+//       });
+//     }
 //   }
-// });
-// const order = new Order({
-//   ...req.body,
+// );
 
-//   items: JSON.parse(
-//     req.body.items
-//   ),
-
-//   paymentScreenshot:
-//     req.file?.path || "",
-// });
 router.post(
   "/",
   upload.single("paymentScreenshot"),
   async (req, res) => {
     try {
+      // Safely ensure transactionId is captured and trimmed if present
+      const transactionIdRaw = req.body.transactionId ? req.body.transactionId.trim() : "";
+
       const order = new Order({
         ...req.body,
-
         items: JSON.parse(req.body.items),
-
-        paymentScreenshot:
-          req.file?.path || "",
+        transactionId: transactionIdRaw, // Enforce explicit mapping loop pass-through
+        paymentScreenshot: req.file?.path || "",
       });
 
       await order.save();
-
       res.json(order);
     } catch (err) {
       res.status(500).json({

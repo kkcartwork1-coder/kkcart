@@ -205,12 +205,14 @@
 //   );
 // }
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import Header from "../components/Header";
 import CategoryCard from "../components/CategoryCard";
 import ProductCard from "../components/ProductCard";
 import API from "../api";
 import toast from "react-hot-toast";
+import { SearchContext } from "../context/SearchContext";
+import { Truck, ArrowRight } from "lucide-react";
 
 export default function GroceryHome() {
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -240,97 +242,94 @@ export default function GroceryHome() {
     }
   };
 
+  const { search } = useContext(SearchContext);
+
   return (
     <main className="min-h-screen bg-[#f7f7f7]">
       <Header />
+{/* <section className="max-w-7xl mx-auto px-4 pt-5">
+  <div className="bg-green-600 rounded-3xl p-6 md:p-10 text-white">
 
-      <section className="max-w-7xl mx-auto px-4 pt-6">
-        <div className="overflow-hidden bg-white shadow-xl border rounded-tl-[90px] rounded-br-[90px] rounded-tr-[25px] rounded-bl-[25px]">
+    <p className="text-sm font-semibold opacity-90">
+      🚚 Delivery in 20-30 mins
+    </p>
 
-          <div className="grid lg:grid-cols-2">
+    <h1 className="text-3xl md:text-6xl font-black mt-2">
+      Grocery at your
+      <br />
+      doorstep.
+    </h1>
 
-            {/* LEFT CONTENT */}
-            <div className="bg-gradient-to-br from-green-600 to-emerald-700 text-white p-8 md:p-14 flex flex-col justify-center">
+    <p className="mt-3 opacity-90 max-w-lg">
+      Fresh fruits, vegetables, dairy, bakery and daily essentials.
+    </p>
 
-              <div className="inline-flex w-fit px-4 py-2 rounded-full bg-white/20 backdrop-blur text-sm font-bold">
-                🛒 KKCart Grocery
-              </div>
+  </div>
+</section> */}
+<section className="max-w-7xl mx-auto px-4 pt-6 select-none">
+      {/* OUTER CARD CONTAINER */}
+      <div className="relative w-full rounded-[32px] bg-gradient-to-br from-[#06170E] to-[#030B07] text-white border border-emerald-500/10 shadow-xl overflow-hidden group">
+        
+        {/* Ambient Glows */}
+        <div className="absolute top-0 left-0 w-64 h-64 bg-emerald-500/10 rounded-full blur-[80px] pointer-events-none" />
 
-              <h1 className="text-5xl md:text-7xl font-black mt-6 leading-[1.05]">
-                Fresh
-                <br />
-                Grocery
-                <br />
-                Delivered
+        {/* FORCED HORIZONTAL SIDE-BY-SIDE FLEX LAYOUT FOR ALL SCREENS */}
+        <div className="flex flex-row items-center h-full min-h-[180px] sm:min-h-[220px] md:min-h-[260px]">
+          
+          {/* LEFT SIDE: TEXT DETAILS (FIXED WIDTH PERCENTAGE) */}
+          <div className="w-[58%] sm:w-[55%] p-4 sm:p-8 md:p-10 space-y-3 sm:space-y-4 text-left z-20 shrink-0">
+            
+            {/* Delivery Time Pill Badge */}
+            <div className="inline-flex items-center gap-1 sm:gap-1.5 bg-emerald-500/10 backdrop-blur-md border border-emerald-500/20 px-2 py-1 sm:px-3 sm:py-1.5 rounded-lg sm:rounded-xl shadow-sm">
+              <Truck size={12} className="text-emerald-400 animate-pulse shrink-0" />
+              <span className="text-[8px] sm:text-[10px] md:text-xs font-black uppercase tracking-wider text-emerald-400">
+                Delivery in 30-40 mins
+              </span>
+            </div>
+
+            {/* Typography Header Block */}
+            <div className="space-y-1">
+              <h1 className="text-lg sm:text-3xl md:text-4xl lg:text-5xl font-black tracking-tight leading-tight text-white">
+                Grocery at your <br />
+                <span className="bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">
+                  doorstep.
+                </span>
               </h1>
-
-              <p className="mt-6 text-lg text-white/90 max-w-lg">
-                Fruits, vegetables, dairy, bakery, chicken, fish and all your daily essentials delivered quickly to your doorstep.
+              
+              <p className="text-gray-400 text-[9px] sm:text-xs md:text-sm font-semibold max-w-xl leading-normal line-clamp-2 sm:line-clamp-none">
+                Handpicked farm-fresh fruits, organic vegetables, dairy, and your daily household essentials.
               </p>
-
-              {/* <div className="flex gap-4 mt-8 flex-wrap">
-                <button className="bg-white text-green-700 px-8 py-4 rounded-2xl font-bold hover:scale-105 transition">
-                  Shop Now
-                </button>
-
-                <button className="border-2 border-white px-8 py-4 rounded-2xl font-bold hover:bg-white hover:text-green-700 transition">
-                  View Categories
-                </button>
-              </div> */}
-
-              {/* STATS */}
-              <div className="grid grid-cols-3 gap-4 mt-10">
-                <div>
-                  <h3 className="text-3xl font-black">10min</h3>
-                  <p className="text-white/80 text-sm">Delivery</p>
-                </div>
-
-                <div>
-                  <h3 className="text-3xl font-black">450+</h3>
-                  <p className="text-white/80 text-sm">Products</p>
-                </div>
-
-                <div>
-                  <h3 className="text-3xl font-black">100%</h3>
-                  <p className="text-white/80 text-sm">Fresh</p>
-                </div>
-              </div>
             </div>
 
-            {/* RIGHT IMAGE */}
-            <div className="relative h-[350px] md:h-[600px]">
-              <img
-                src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1200&q=80"
-                alt="Fresh Grocery"
-                className="w-full h-full object-cover"
-              />
-
-              {/* OFFER CARD */}
-              <div className="absolute top-6 right-6 bg-white p-5 rounded-3xl shadow-xl">
-                <h3 className="text-3xl font-black text-green-600">
-                  20% OFF
-                </h3>
-
-                <p className="text-gray-600 text-sm">
-                  On your first grocery order
-                </p>
-              </div>
-
-              {/* DELIVERY CARD */}
-              <div className="absolute bottom-6 left-6 bg-white p-5 rounded-3xl shadow-xl">
-                <p className="text-gray-500 text-sm">
-                  Delivery Time
-                </p>
-
-                <h3 className="text-2xl font-black">
-                  10 - 20 Min 🚚
-                </h3>
-              </div>
-            </div>
+            {/* Premium Action Button */}
+            {/* <div className="pt-1">
+              <button
+                type="button"
+                onClick={() => navigate("/grocery")}
+                className="h-8 sm:h-10 bg-emerald-500 hover:bg-emerald-600 text-white font-black text-[9px] sm:text-xs uppercase tracking-wider px-3 sm:px-5 rounded-lg sm:rounded-xl flex items-center gap-1 sm:gap-1.5 shadow-md transition-all active:scale-[0.98] duration-200 group/btn"
+              >
+                <span>Explore Marketplace</span>
+                <ArrowRight size={12} className="stroke-[3] transition-transform duration-200 group-hover/btn:translate-x-0.5 shrink-0" />
+              </button>
+            </div> */}
 
           </div>
+
+          {/* RIGHT SIDE: PICTURE FRAME (FIXED REMAINING WIDTH PERCENTAGE) */}
+          <div className="w-[42%] sm:w-[45%] h-full absolute right-0 top-0 bottom-0 overflow-hidden z-10">
+            <img
+              src="https://images.unsplash.com/photo-1610348725531-843dff563e2c?auto=format&fit=crop&w=800&q=80"
+              alt="Premium Quality Fresh Produce Marketplace"
+              className="w-full h-full object-cover rounded-tl-[40px] sm:rounded-tl-[80px] scale-[1.01] transition-transform duration-700 group-hover:scale-105"
+            />
+            {/* Smooth Edge Linear Mask Layer */}
+            <div className="absolute inset-0 bg-gradient-to-r from-[#06170E] via-[#06170E]/30 to-transparent z-10 pointer-events-none" />
+          </div>
+
         </div>
-      </section>
+      </div>
+    </section>
+
 
       {/* CATEGORY */}
       <CategoryCard
@@ -346,10 +345,15 @@ export default function GroceryHome() {
           </div>
         </div>
       ) : (
-        <ProductCard
-          products={products}
-          selectedCategory={selectedCategory}
-        />
+  <ProductCard
+  products={products.filter((p) =>
+    p.name.toLowerCase().includes(search.toLowerCase())
+  )}
+  selectedCategory={selectedCategory}
+/>
+
+
+
       )}
     </main>
   );
