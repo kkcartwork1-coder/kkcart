@@ -21,6 +21,7 @@ import Footer from "./components/Footer";
 
 import "leaflet/dist/leaflet.css";
 import TermsAndConditions from "./pages/TermsAndConditions";
+import LaunchWrapper from "./pages/ComingSoon";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -43,12 +44,13 @@ function App() {
 
       <Routes>
         
-        <Route path="/" element={<Home />} />
+        {/* <Route path="/" element={<Home />} /> */}
         <Route path="/grocery" element={<GroceryHome />} />
         <Route path="/food" element={<FoodHome />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/orders" element={<MyOrders />} />
+         <Route path="/" element={<LaunchWrapper />} />
         <Route path="/TermAndConditions" element={<TermsAndConditions />} />
         <Route path="/order-success" element={<OrderSuccess />} />
         <Route path="/footer" element={<Footer />} />
