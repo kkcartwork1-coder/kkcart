@@ -458,22 +458,47 @@ export default function ProductCard({ products = [], selectedCategory }) {
   const { cart, addToCart, decreaseQty } = useContext(CartContext);
 
   const filteredProducts = products.filter((product) => {
-    // ⚡ FIX: Normalize casing and accurately map main section types to sub-category structures
-    const currentCategory = selectedCategory || "All";
-    const productCategory = product.category || "";
-    const productType = product.type || "";
+    // 1. Normalize tracking variables to clean, trimmed lowercase strings
+    const currentTab = (selectedCategory || "All").trim().toLowerCase();
+    const productCategory = (product.category || "").trim().toLowerCase();
+    const productType = (product.type || "").trim().toLowerCase();
 
-    // If "All" or "Grocery" section is active, capture items that fall under sub-tags too
-    const categoryMatch =
-      currentCategory === "All" ||
-      productCategory === currentCategory ||
-      (currentCategory === "Grocery" && productType === "Grocery");
-
+    // ⚡ STEP 1: Core Search Match Logic Execution Layer
     const searchMatch =
       product.name?.toLowerCase().includes(search.toLowerCase()) ||
       product.category?.toLowerCase().includes(search.toLowerCase());
 
-    return categoryMatch && searchMatch;
+    if (!searchMatch) return false;
+
+    // ⚡ STEP 2: Multi-Tier Category Mapping Shield Matrix
+    // RULE 1: If "All" is selected, bypass filters to display absolutely everything
+    if (currentTab === "all") {
+      return true;
+    } 
+    
+    // RULE 2: If the overarching "Grocery" pill is active, display baseline staples
+    if (currentTab === "grocery") {
+      return (
+        productCategory === "grocery" || 
+        productCategory === "general" || 
+        productCategory === ""
+      );
+    } 
+    
+    // RULE 3: Robust matching for "Baby Care" / "Babycare" variations
+    if (currentTab.includes("baby") || currentTab.includes("care")) {
+      return (
+        productCategory.includes("baby") || 
+        productCategory.includes("care") ||
+        productCategory === "babycare"
+      );
+    }
+
+    // RULE 4: Handle other subcategories while safeguarding against layout spaces ("meat & fish")
+    const normalizedProductCat = productCategory.replace(/\s+/g, "");
+    const normalizedCurrentTab = currentTab.replace(/\s+/g, "");
+    
+    return normalizedProductCat === normalizedCurrentTab;
   });
 
   const handleAdd = (product) => {
@@ -492,7 +517,7 @@ export default function ProductCard({ products = [], selectedCategory }) {
   return (
     <section className="max-w-7xl mx-auto px-4 pb-16 select-none text-left">
       
-      {/* 1. MINIMAL PREMIUM ROW HEADER */}
+      {/* 1. ROW HEADER */}
       <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-8 px-1">
         <div>
           <h2 className="text-xl sm:text-2xl font-black text-gray-900 tracking-tight">
@@ -504,7 +529,7 @@ export default function ProductCard({ products = [], selectedCategory }) {
         </div>
       </div>
 
-      {/* 2. DYNAMIC SEARCH EMPTY STATE CONTROLLER */}
+      {/* 2. DYNAMIC VIEWPORT CONTROLLER */}
       {filteredProducts.length === 0 ? (
         <div className="bg-white rounded-[32px] border border-gray-100 p-12 text-center shadow-sm max-w-md mx-auto mt-6">
           <div className="w-16 h-16 rounded-2xl bg-orange-50 text-orange-500 flex items-center justify-center mx-auto mb-4">
@@ -527,7 +552,6 @@ export default function ProductCard({ products = [], selectedCategory }) {
 
             const cartItem = cart.find((item) => item._id === product._id);
 
-            // Handle strikethrough logic variables safely without crashing on missing values
             const basePrice = Number(product.price) || 0;
             const crossedPrice = Math.round(basePrice * 1.15);
 
@@ -536,7 +560,7 @@ export default function ProductCard({ products = [], selectedCategory }) {
                 key={product._id}
                 className="group bg-white rounded-[24px] border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between overflow-hidden"
               >
-                {/* PRODUCT THUMBNAIL WRAPPER */}
+                {/* THUMBNAIL FRAME */}
                 <div
                   onClick={() => navigate(`/product/${product._id}`)}
                   className="relative w-full aspect-square bg-gray-50/50 flex items-center justify-center p-4 cursor-pointer overflow-hidden shrink-0"
@@ -558,7 +582,7 @@ export default function ProductCard({ products = [], selectedCategory }) {
                   </div>
                 </div>
 
-                {/* SPECIFICATION CARD CONTENT */}
+                {/* SPECIFICATION LAYOUT */}
                 <div className="p-3 sm:p-4 flex flex-col flex-1 justify-between">
                   <div className="space-y-1">
                     <h3
@@ -569,7 +593,7 @@ export default function ProductCard({ products = [], selectedCategory }) {
                     </h3>
                   </div>
 
-                  {/* BOTTOM ACTION INTERACTION CONTROLS BAR */}
+                  {/* PRICE & INTERACTION LAYER */}
                   <div className="flex items-center justify-between mt-2">
                     <div>
                       <p className="text-sm sm:text-base font-black text-gray-900 leading-none">
@@ -580,7 +604,6 @@ export default function ProductCard({ products = [], selectedCategory }) {
                       </p>
                     </div>
 
-                    {/* DYNAMIC CART STATE TRIGGER BUTTONS */}
                     {!cartItem ? (
                       <button
                         type="button"
