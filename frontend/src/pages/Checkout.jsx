@@ -1267,7 +1267,8 @@ export default function Checkout() {
           toast.success("Location coordinates loaded!");
         } catch (err) {
           console.log("LOCATION PROCESS ERROR:", err);
-          toast.error("Failed to process location");
+          
+          toast.error("Delivery requires location verification (Max 7 km)");
         } finally {
           setLoadingLocation(false);
         }
